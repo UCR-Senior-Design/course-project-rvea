@@ -1,26 +1,42 @@
+import { useState } from 'react'
 import './Login.css'
 import banner from '../images/ucr-banner.png'
 
-function Login() {
+/* Extra Features
+    ** Incorrect Email or Password Check?
+    1) Email already exists in db alert when trying to register
+    2) Forgot Password?
+    3) CSS Prettying [see Login.css for more info]
+*/
 
-    function handleSignin() {
-        alert('signin pressed');
+function Login() {
+    //State Hooks
+    const [title, setTitle] = useState('Login');
+    const [buttonName, setButtonName] = useState('Sign In');
+
+    //Event Handlers
+    function handleFormSubmit() {
+        if (title != 'Login') { handleReset(); }
     }
     function handleRegister() {
-        alert('register clicked');
+        setTitle('Register');
+        setButtonName('Sign Up');
+    }
+    function handleReset() {
+        setTitle('Login');
+        setButtonName('Sign In');
     }
 
-    //State Hooks for register and sign in?
 
     return (
         <>
             <div className='image'>
-                <a href='#'><img src={banner}></img></a>
+                <a href='#' onClick={() => handleReset()}><img src={banner}></img></a>
             </div>
             <section>
                 <div className='login-container'>
                     <div className='login-title'>
-                        <h1>Login</h1>
+                        <h1>{title}</h1>
                     </div>
 
                     <div className='login-contents'>
@@ -31,15 +47,14 @@ function Login() {
                             <div className='input-boxes'>
                                 <input name='pwd' type='password' placeholder='Password' required></input>
                             </div>
-                            <button className='login-submit' onClick={() => handleSignin()}>Sign In</button>
-                            <p className='register'>Don&apos;t have an account?&nbsp;<a href='#' onClick={()=>handleRegister()}>Register</a></p>
+                            <button className='login-submit' onSubmit={() => handleFormSubmit()}>{buttonName}</button>
+                            {title === 'Login'? <p className='register'>Don&apos;t have an account?&nbsp;<a href='#' onClick={()=>handleRegister()}>Register</a></p> : <p></p>}
                         </form>
                     </div>
 
                 </div>
             </section>
         </>
-
     )
 }
 
