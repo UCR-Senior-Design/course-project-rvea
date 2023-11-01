@@ -111,6 +111,9 @@ section {
     cursor: pointer;
 }
 
-/*
-[Optional to make site nicer to use]: animations, icons(fontawesome.com), box shadow, forgot password
-*/
+.user_registration {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-top: 0;
+}
