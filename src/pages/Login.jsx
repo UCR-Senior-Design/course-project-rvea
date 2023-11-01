@@ -67,11 +67,14 @@ function Login() {
                   </a>
                 </p>
               ) : (
-                <div>
-                  <input type='radio' id='student'></input>
-                  <input type='radio' id='professor'></input>
+                <div className="user_registration">
+                  <label for="user_type">Register as a&nbsp;</label>
+                  <select name="user_type" required>
+                    <option value='' disabled selected>---</option>
+                    <option value="Student">Student</option>
+                    <option value="Professor">Professor</option>
+                  </select>
                 </div>
-
               )}
             </form>
           </div>

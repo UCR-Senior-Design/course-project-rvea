@@ -110,3 +110,10 @@ section {
 .register a {
     cursor: pointer;
 }
+
+.user_registration {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-top: 0;
+}
