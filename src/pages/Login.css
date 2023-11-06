@@ -10,8 +10,8 @@ body {
     display: flex;
     justify-content: center;
 
-    background-color: #191D88;
-    background: linear-gradient(#191D88, #4052ab);
+    background-color: #FAF7EB;
+    /*background: linear-gradient(#191D88, #4052ab); */
     height: 1000px;
     min-width: 500px;
 }
