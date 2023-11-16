@@ -1,0 +1,27 @@
+
+
+.navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    margin: 0;
+}
+
+.logo {
+    width: 325px;
+    display: flex;
+}
+
+.nav-list {
+    display: flex;
+    list-style-type: none;
+}
+
+.right-nav {
+    display: flex;
+    align-items: center;
+}
+
+.signout:hover {
+    cursor: pointer;
+}

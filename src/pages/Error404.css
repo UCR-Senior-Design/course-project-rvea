@@ -1,0 +1,21 @@
+h1 {
+    padding-bottom: 20px;
+}
+
+.link-container {
+    display: block;
+}
+
+p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 5px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    list-style-type: none;
+}

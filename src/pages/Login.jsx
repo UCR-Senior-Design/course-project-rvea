@@ -26,7 +26,7 @@ function Login() {
     <>
       <div className="image">
         <a href="#" onClick={() => handleReset()}>
-          <img src={banner}></img>
+          <img src={banner} alt="ucr-banner"></img>
         </a>
       </div>
       <section>
