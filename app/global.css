@@ -1,0 +1,19 @@
+:root {
+    --bg_color: #FFFAEB;
+    --blue: #00386D;
+    --yellow: #F5A90F;
+    --grey: #585858;
+}
+
+body {
+    background: var(--bg_color);
+}
+
+img {
+    margin-left: 16px;
+    margin-top: 16px;
+}
+
+input {
+    padding: 8px;
+}
