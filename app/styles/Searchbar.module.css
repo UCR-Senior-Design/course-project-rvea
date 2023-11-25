@@ -1,0 +1,9 @@
+.searchbar {
+    border-radius: 40px;
+}
+
+.button {
+    border-radius: 0 40px 40px 0;
+    color: white;
+    background-color: var(--blue);
+}
