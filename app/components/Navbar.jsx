@@ -8,9 +8,10 @@ import styles from '../styles/Navbar.module.css'
 export default function Navbar() {
 
     function handleClick() {
-        alert('button clicked');
         //sign out user
-        //redirect to login page
+        //reroute to login page
+        location.href = '/';
+        
     }
 
     return(
@@ -27,8 +28,6 @@ export default function Navbar() {
                     <p>Hello [Current User]</p>
                     <button className={styles.button} onClick={handleClick}>Sign Out</button>
                 </div>
-                
-
         </div>
     )
 }

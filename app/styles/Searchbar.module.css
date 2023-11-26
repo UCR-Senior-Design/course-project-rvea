@@ -1,9 +1,19 @@
+.container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
 .searchbar {
     border-radius: 40px;
+    width: 30%;
 }
 
 .button {
     border-radius: 0 40px 40px 0;
-    color: white;
     background-color: var(--blue);
+    color: white;
+    position: absolute;
+    height: 100%;
+    left: 62%;
 }
