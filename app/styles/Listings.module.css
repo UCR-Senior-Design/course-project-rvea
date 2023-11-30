@@ -1,0 +1,64 @@
+.container {
+    padding: 0 20px;
+    display: flex;
+    height: 700px;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.listings-container {
+    background-color: gray;
+    width: 20%;
+    min-width: 350px;
+    border-radius: 5px;
+}
+
+.details-container {
+    background-color: gray;
+    width: 75%;
+    border-radius: 5px;
+}
+
+
+.cards {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    padding: 10px;
+    border: solid 2px;
+    border-color: gray;
+}
+.rankings {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.text {
+    margin: 0;
+    color: var(--grey);
+}
+.title {
+    text-decoration: underline;
+    color: black;
+}
+.quarter {
+    font-weight: bold;
+    color: black;
+}
+.wage {
+    color: black;
+    font-weight: bold;
+}
+.position {
+    color: black;
+    font-weight: bold;
+}
+
+
+
+
+.details {
+    background-color: royalblue;
+    color: white;
+}

@@ -1,7 +1,10 @@
 .container {
     display: flex;
+    flex-direction: row;
+    align-items: center;
     justify-content: center;
     position: relative;
+    margin-bottom: 30px;
 }
 
 .searchbar {
@@ -14,6 +17,8 @@
     background-color: var(--blue);
     color: white;
     position: absolute;
+    left: 63%;
     height: 100%;
-    left: 62%;
+    cursor: pointer;
+    border: none;
 }
