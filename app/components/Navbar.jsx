@@ -16,7 +16,7 @@ export default function Navbar() {
 
     return(
         <div className={styles.navbar}>
-            <Image src="/ucr_logo.png" width="210" height="64"></Image>
+            <Image className={styles.image} src="/ucr_logo.png" width="210" height="64"></Image>
             <nav>
                 <Link className={styles.links} href='/'>Login</Link>
                 <Link className={styles.links} href='/student/job-listings'>Job Listings</Link>
