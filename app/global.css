@@ -20,3 +20,7 @@ img {
 input {
     padding: 8px;
 }
+
+nextjs-portal {
+    display: none;
+  }

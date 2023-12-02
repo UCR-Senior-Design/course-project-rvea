@@ -16,5 +16,5 @@ export default function Page() {
         </>
     )
 
-    //location.href('/student/profile') as a default once user is auth in db
+
 }
