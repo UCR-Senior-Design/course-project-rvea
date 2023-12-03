@@ -1,0 +1,49 @@
+.mg_left {
+    margin-left: 16px;
+}
+
+.container {
+    background: var(--bg_darker);
+    width: 904px;
+    height: 600px;
+    border-radius: 8px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card {
+    background: white;
+    width: 808px;
+    height: 272px;
+    margin-top: 32px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card_top {
+    display: flex;
+}
+
+.card_description {
+    width: 648px;
+    height: 128px;
+}
+
+.button {
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+    border-radius: 40px;
+    align-self: center;
+    width: 296px;
+    height: 56px;
+    border: none;
+}
+
+.bg_yellow {
+    background: var(--yellow)
+}
