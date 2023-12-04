@@ -39,10 +39,14 @@
     font-weight: bold;
     color: white;
     border-radius: 40px;
-    width: 110px;
-    height: 50px;
+    width: 100px;
+    height: 45px;
     border: none;
     transition: all 0.5s;
+}
+
+.button:hover {
+    background: var(--blue_hover);
 }
 
 .bg_blue {
