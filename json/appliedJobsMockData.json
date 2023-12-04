@@ -1,0 +1,39 @@
+{
+    "appliedJobs": [
+        {
+            "professor": "Tao Jiang",
+            "positionInfo": "CS150-Fall 2023-TA",
+            "positionDescription": "4 Units, Lecture, 3 hours; discussion, 1 hour. Prerequisite(s): CS 014 with a grade of “C-” or better; CS 111; MATH 009C (or MATH 09HC). A study of formal languages. Includes regular and context-free languages; computational models for generating these languages such as finite-state automata, pushdown automata, regular expressions, and context-free grammars; mathematical properties of the languages and models; and equivalence between the models. Also introduces Turing machines and decidability."
+        },
+        {
+            "professor": "Nader S. Senobari",
+            "positionInfo": "CS170-Fall 2022-ULA",
+            "positionDescription": "4 Units, Lecture, 3 hours; discussion, 1 hour. Prerequisite(s): CS 100 with a grade of “C-” or better, CS 111. An introduction to the field of artificial intelligence. Focuses on discretevalued problems. Covers heuristic search, problem representation, and classical planning. Also covers constraint satisfaction and logical inference."
+        },
+        {
+            "professor": "Trent Jaegar",
+            "positionInfo": "CS165-Winter 2023-Reader",
+            "positionDescription": "4 Units, Lecture, 3 hours; laboratory, 3 hours. Prerequisite(s): CS 141, CS 153. Examines the ways in which information systems are vulnerable to security breaches. Topics include attacks; security labels, lattices, and policies; safeguards and countermeasures; intrusion detection; authorization and encryption techniques; networks; digital signatures, certificates, and passwords; privacy issues, firewalls, and spoofing; Trojan horses and computer viruses; CERT Coordination Center; and electronic commerce."
+        },
+        {
+            "professor": "Vassilis Tsotras",
+            "positionInfo": "CS166-Spring 2022-TA",
+            "positionDescription": "4 Units, Lecture, 3 hours; laboratory, 3 hours. Prerequisite(s): CS 100, CS 111. Covers architecture of database management systems; relational, network, and hierarchical models; distributed database concepts; query languages; implementation issues; and privacy and security of the database."
+        },
+        {
+            "professor": "Elaheh Sandrendini",
+            "positionInfo": "CS160-Winter 2023-ULA",
+            "positionDescription": "4 Units, Lecture, 3 hours; laboratory, 3 hours. Prerequisite(s): CS 061, CS 100, CS 111. A study of concurrent and parallel systems. Topics include modular structure and design, interprocess communication, synchronization, failures, persistence, and concurrency control. Also covers atomic transactions, recovery, language support, distributed interprocess communication, and implementation mechanisms. Provides preparation for the study of operating systems, databases, and computer networking."
+        },
+        {
+            "professor": "Heng Yin",
+            "positionInfo": "CS153-Winter 2020-Reader",
+            "positionDescription": "4 Units, Lecture, 3 hours; laboratory, 3 hours. Prerequisite(s): CS 061, CS 100, CS 111, C++ programming proficiency. Covers the principles and practice of operating system design. Includes concurrency, memory management, file systems, protection, security, command languages, scheduling, and system performance."
+        },
+        {
+            "professor": "Neftali W. Medina",
+            "positionInfo": "CS152-Spring 2023-TA",
+            "positionDescription": "4 Units, Lecture, 3 hours; laboratory, 3 hours. Prerequisite(s): CS 061, CS 100, CS 111, CS 150. Covers the fundamentals of compiler design. Includes lexical analysis, parsing, semantic analysis, compile-time memory organization, run-time memory organization, code generation, and compiler portability issues."
+        }
+    ]
+}

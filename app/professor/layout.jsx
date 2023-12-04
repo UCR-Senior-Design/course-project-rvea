@@ -1,6 +1,6 @@
 import Navbar from '../components/Navbar.jsx'
 
-export default function StudentLayout({ children }) {
+export default function ProfessorLayout({ children }) {
     return (
         <html lang="en">
             <body>
@@ -10,3 +10,5 @@ export default function StudentLayout({ children }) {
         </html>
     )
 }
+
+//Fix Navbar to pass in prop routes?

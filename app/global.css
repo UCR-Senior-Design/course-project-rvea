@@ -2,9 +2,12 @@
 
 :root {
     --bg_color: #FFFAEB;
-    --blue: #00386D;
+    --blue: #003f7a;
+    --blue_hover: #406F9B;
     --yellow: #F5A90F;
+    --yellow_hover: #F8BE4B;
     --grey: #585858;
+    --bg_darker: #E4DFD0;
 }
 
 body {
