@@ -1,0 +1,147 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-gap: 2em;
+    margin: 1em;
+}
+
+.nested_container_left {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 2em;
+}   
+
+.nested_container_middle {
+    display: grid;
+    grid-template-rows: 2fr 2fr;
+    grid-gap: 2m;
+}
+
+.nested_container_right {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-gap: 2em;  
+}
+
+.skills_container {
+    grid-template-rows: 1fr 4fr;
+}
+
+.skills_upper_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.skills_lower_container {
+    background-color: #E4DFD0;
+    height: 450px;
+    padding: 5px;
+    grid-auto-columns: minmax(250px, auto);
+    border-radius: 20px;
+}
+
+.courses_container {
+    grid-template-rows: 1fr 4fr;
+}
+
+.courses_upper_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.courses_lower_container {
+    background-color: #E4DFD0;
+    height: 450px;
+    padding: 5px;
+    grid-auto-columns: minmax(250px, auto);
+    border-radius: 20px;
+}
+
+.year_container {
+    grid-template-rows: 1fr 4fr;
+}
+
+.year_upper_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.year_lower_container {
+    background-color: #E4DFD0;
+    height: 450px;
+    padding: 5px;
+    grid-auto-columns: minmax(250px, auto);
+    border-radius: 20px;
+}
+
+.resume_container {
+    grid-template-rows: 1fr 4fr;
+}
+
+.resume_upper_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.resume_lower_container {
+    background-color: #E4DFD0;
+    height: 700px;
+    padding: 5px;
+    grid-auto-columns: minmax(250px, auto);
+    border-radius: 20px;
+}
+
+.personal_info_container {
+
+}
+
+.personal_info_upper_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.personal_info_lower_container {
+    background-color: #E4DFD0;
+    height: 750px;
+    padding: 5px;
+    grid-auto-columns: minmax(250px, auto);
+    border-radius: 20px;
+}
+
+.relevant_experience_container {
+    grid-template-rows: 1fr 4fr;
+}
+
+.relevant_experience_upper_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.relevant_experience_lower_container {
+    background-color: #E4DFD0;
+    height: 650px;
+    padding: 5px;
+    grid-auto-columns: minmax(250px, auto);
+    border-radius: 20px;
+}
+
+.button {
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+    border-radius: 40px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    transition: all 0.5s;
+}
+
+.bg_yellow {
+    background: var(--yellow);
+}

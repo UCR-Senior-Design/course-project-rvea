@@ -175,6 +175,7 @@ const dummyData = [{
             </div>
             </>
 */}
+
 export default function Recommended() {
     return(
         <div className={styles.bg}>
