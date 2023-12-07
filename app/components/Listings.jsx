@@ -138,5 +138,5 @@ export default function Listings() {
 }
 
 //useState on click?
-//FIXME: prereq(bold span)
 //FIXME: overflow scroll not working for details container
+//Fixme: scrollbar on outside of details container? (nit picky)

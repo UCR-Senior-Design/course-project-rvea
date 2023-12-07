@@ -1,7 +1,10 @@
 import './global.css'
 
 export const metadata = {
-    title: 'UCR TA Hiring Website'
+    title: 'TA Hiring Website',
+    icons: {
+        icon: '/ucr_icon.jpg'
+    }
 }
 
 export default function RootLayout({ children }) {
