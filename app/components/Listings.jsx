@@ -98,12 +98,39 @@ export default function Listings() {
 
             <div className={styles['details-container']}>
                 <div className={styles.details}>
-                    <p>--- NOTES ---</p>
-                    <p>Job title, Job description</p>
-                    <p>prereq's </p>
-                    <p>wage</p>
-                    <p># of pos left</p>
-                    <p>min required hrs/week</p>
+                    <h1>CS111-Discrete Structures Teaching Assistant</h1>
+                    
+                    <div className={styles.subtitle}>
+                        <Image className={styles.no_margin} src='/pc.png' width='60' height='60'></Image>
+                        <div>
+                            <p className={`${styles.subtitle_text} ${styles.color_bold}`}>Elena Strzheletska</p>
+                            <p className={`${styles.subtitle_text} ${styles.color_gray} ${styles.no_margin}`}>Term: Spring 2024</p>
+                        </div>
+
+                    </div>
+
+                    
+                    
+                    <h2 className={`${styles.underline} ${styles.no_margin}`}>About the Role</h2>
+                    <div className={styles.about}>
+                        <div className={styles.about_card}>
+                            <p className={`${styles.about_heading} ${styles.color_bold}`}>Deadline to Apply</p>
+                            <p className={`${styles.no_margin} ${styles.color_gray}`}>one two three four five six seven eight nine ten</p>
+                        </div>
+                        <div className={styles.about_card}>
+                            <p className={`${styles.about_heading} ${styles.color_bold}`}>Wage</p>
+                            <p className={`${styles.no_margin} ${styles.color_gray}`}>one two three four five six seven eight nine ten</p>
+                        </div>
+                        <div className={styles.about_card}>
+                            <p className={`${styles.about_heading} ${styles.color_bold}`}>Minimum Hours/Week</p>
+                            <p className={`${styles.no_margin} ${styles.color_gray}`}>one two three four five six seven eight nine ten</p>
+                        </div>        
+                    </div>
+                    <p className={styles.prereq_text}><span className={styles.color_bold}>Prerequisite(s): </span><span className={styles.color_gray}>asdfasdf</span></p>
+
+                    <h2 className={`${styles.underline} ${styles.no_margin}`}>Role Description</h2>
+                    <p className={styles.description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pharetra maximus rutrum. Nunc ac congue turpis. Aenean gravida eget massa quis luctus. Integer neque nibh, efficitur ut sollicitudin eu, finibus at felis. Sed rutrum velit eu velit venenatis, et venenatis metus volutpat. Morbi vestibulum, quam eget elementum accumsan, velit dui elementum sem, sed varius sem metus eget diam. Maecenas dolor odio, porttitor sit amet purus facilisis, tristique vulputate lorem. Integer nec enim nisl. Praesent sed eleifend nisi. Donec id efficitur lectus.</p>
+                    <button className={`${styles.button} ${styles.color_bold}`}>Apply</button>
                 </div>
             </div>
         </div>
@@ -111,4 +138,5 @@ export default function Listings() {
 }
 
 //useState on click?
-//css styling fixes, maybe navbar fix too?
+//FIXME: prereq(bold span)
+//FIXME: overflow scroll not working for details container

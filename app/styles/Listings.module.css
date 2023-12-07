@@ -4,18 +4,24 @@
     height: 700px;
     flex-direction: row;
     justify-content: space-evenly;
+    overflow-wrap: break-word;
 }
+
+
+
 
 /* Left Column | Job Listings */
 .listings-container {
-    background-color: gray;
+    background-color: var(--bg_darker);
     width: 20%;
     min-width: 350px;
-    border-radius: 5px;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     overflow: auto;
+    padding: 5px 0 5px 5px;
 }
+
 
 .cards {
     display: flex;
@@ -52,14 +58,90 @@
 }
 
 
+
+
 /* Right Column | Details */
 .details-container {
-    background-color: gray;
+    background-color: var(--bg_darker);
     width: 75%;
     border-radius: 5px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    text-align: left;
+}
+.details {
+    background-color: white;
+    border-radius: 10px;
+    min-width: 650px;
+    padding: 80px;
+    padding-top: 50px;
+    overflow: auto;
 }
 
-.details {
-    background-color: darkred;
+
+.subtitle {
+    margin-bottom: 50px;
+    display: flex;
+}
+.subtitle_text {
+    margin-top: 8px;
+    margin-bottom: 3px;
+    position: relative;
+    left: 15px;
+}
+
+
+.about {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.about_card {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    padding-bottom: 10px;
+}
+.about_heading {
+    margin-bottom: 5px;
+}
+.prereq_text {
+    margin-bottom: 50px;
+}
+
+
+.description {
+    margin-bottom: 50px;
+    width: 650px;
+}
+
+
+.button {
+    background-color: var(--yellow);
     color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 1px 3px 10px gray;
+}
+.button:active {
+    box-shadow: none;
+}
+
+
+.color_gray {
+    color: var(--grey);
+}
+.color_bold {
+    font-weight: bold;
+}
+.underline {
+    text-decoration: underline;
+}
+.no_margin {
+    margin: 0px;
 }

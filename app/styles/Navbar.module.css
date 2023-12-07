@@ -32,6 +32,7 @@
 
 .navbar_link:hover {
     color: var(--blue);
+    text-decoration: underline;
 }
 
 .button {
