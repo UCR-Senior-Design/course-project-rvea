@@ -12,6 +12,9 @@ function returnToLogin() {
 
 export default function Navbar(props) {
     const routes = props.routes;
+    const route_size = Object.keys(routes).length;
+    console.log(route_size);
+
     return (
         <header className={styles.navbar_container}>
             <a href="/">
@@ -28,7 +31,7 @@ export default function Navbar(props) {
                     }
                 </ul>
                 <ul className={styles.navbar_list}>
-                    <li className={styles.navbar_item}><a className={styles.navbar_link} href={"/student/profile"}>Current User</a></li>
+                    <li className={styles.navbar_item}><a className={styles.navbar_link} href={route_size === 4? "/student/profile" : "/professor/profile"}>Current User</a></li>
                     <button onClick={returnToLogin} className={`${styles.button} ${styles.bg_blue}`}>Log out</button>
                 </ul>
             </nav>
