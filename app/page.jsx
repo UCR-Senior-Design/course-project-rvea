@@ -3,7 +3,10 @@ import styles from './styles.module.css'
 import Image from 'next/image'
 
 function navToStudent() {
-    location.href= "/student/profile";
+    location.href = "/student/profile";
+}
+function navToProfessor() {
+    location.href = '/professor/profile'
 }
 
 export default function Page() {
@@ -16,7 +19,7 @@ export default function Page() {
                 <input className={`${styles.border_rounded_8} ${styles.border_grey}`} placeholder="Password" type="text"></input>
                 <button className={`${styles.button} ${styles.bg_blue} ${styles.margin_top_24}`} onClick={navToStudent}>Sign in</button>
                 <h5 className={styles.line_through}><span>or</span></h5>
-                <button className={`${styles.button} ${styles.bg_yellow} ${styles.margin_btm_24}`}>Register Now</button>
+                <button className={`${styles.button} ${styles.bg_yellow} ${styles.margin_btm_24}`} onClick={navToProfessor}>Register Now</button>
             </div>
         </>
     )

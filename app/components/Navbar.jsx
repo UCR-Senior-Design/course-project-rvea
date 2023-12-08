@@ -28,7 +28,7 @@ export default function Navbar(props) {
                     }
                 </ul>
                 <ul className={styles.navbar_list}>
-                    <li className={styles.navbar_item}><a className={styles.navbar_link} href="/student/profile">Current User</a></li>
+                    <li className={styles.navbar_item}><a className={styles.navbar_link} href={"/student/profile"}>Current User</a></li>
                     <button onClick={returnToLogin} className={`${styles.button} ${styles.bg_blue}`}>Log out</button>
                 </ul>
             </nav>
