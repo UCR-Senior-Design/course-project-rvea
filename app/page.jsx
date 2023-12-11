@@ -38,7 +38,5 @@ export default async function page() {
             </div>
         </>
     )
-  }
-
-  
-  
+    //location.href('/student/profile') as a default once user is auth in db
+}

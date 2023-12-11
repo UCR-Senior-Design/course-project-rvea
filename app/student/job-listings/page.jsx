@@ -10,3 +10,5 @@ export default function JobListings() {
 
     )
 }
+
+/*useState for displaying details for each class*/

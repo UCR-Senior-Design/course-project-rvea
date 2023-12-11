@@ -1,5 +1,9 @@
+import Recommended from '../../components/Recommended.jsx'
+
 export default function RecJobs() {
     return(
-        <h1>Recommended Jobs</h1>
+        <>
+        <Recommended />
+        </>
     )
 }
