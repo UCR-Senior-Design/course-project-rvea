@@ -13,7 +13,6 @@ function returnToLogin() {
 export default function Navbar(props) {
     const routes = props.routes;
     const route_size = Object.keys(routes).length;
-    console.log(route_size);
 
     return (
         <header className={styles.navbar_container}>
@@ -38,5 +37,3 @@ export default function Navbar(props) {
         </header>
     )
 }
-
-//can we map and return list elements?
