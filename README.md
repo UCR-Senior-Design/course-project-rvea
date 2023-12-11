@@ -4,8 +4,10 @@ Term: Fall 2023 - Winter 2024
   
 ## How To Run the Website  
 ### Installing Dependencies
-1) Install Node.js  
-   `npm i` ?
+1) Clone repository
+2) Install npm and node
+3) Install project dependencies  
+   `npm install` 
 
 
 ### Running the Website
