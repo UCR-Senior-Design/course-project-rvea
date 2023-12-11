@@ -17,7 +17,7 @@ export default async function page() {
       const collection = db.collection('Student');
   
       // Fetch data from MongoDB for server-side rendering
-      const serverData = await collection.find({}).toArray();
+      //const serverData = await collection.find({}).toArray();
   
     } catch (error) {
       console.error('Error connecting to MongoDB:', error.message);
