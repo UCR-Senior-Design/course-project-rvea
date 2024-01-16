@@ -1,0 +1,79 @@
+.createjob-container {
+    background-color: var(--bg_darker);
+    border-radius: 5px;
+    margin: 30px 50px;
+    padding: 30px 50px;
+    box-sizing: border-box;
+    min-height: 80vh;
+    display: relative;
+}
+
+.jobform {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 80px;
+    gap: 10px;
+}
+
+.jobform .input-container {
+    position: relative;
+    font-size: 14px;
+    padding-top: 20px;
+    margin-bottom: 5px;
+}
+
+.jobform .input-container .inputs {
+    border-radius: 6px;
+    border: none;
+    appearance: none;
+    font-size: 14px;
+    width: 300px;
+    padding: 15px;
+}
+
+.jobform .input-container .labels {
+    position: absolute;
+    left: 12px;
+    top: calc(50% + 5px);
+    transform: translateY(-50%);
+    color: #aaa;
+    transition:
+        top 0.3s ease,
+        font-size 0.3s ease,
+        color 0.3s ease;
+}
+
+.jobform .input-container .inputs:valid + .labels,
+.jobform .input-container .inputs:focus + .labels {
+    top: 10px;
+    font-size: 13px;
+    color: black;
+
+}
+
+.jobform .description {
+    min-height: 150px;
+}
+
+.button {
+    background-color: var(--yellow);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 1px 3px 10px gray;
+
+    width: 150px;
+    height: 40px;
+    margin-top: 20px;
+}
+.button:hover {
+    background-color: var(--yellow_hover);
+    transition: all 0.2s
+}
+.button:active {
+    box-shadow: none;
+    transform: translateY(2px);
+}
