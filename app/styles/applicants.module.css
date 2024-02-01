@@ -1,0 +1,88 @@
+.container {
+    background-color: var(--bg_darker);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 720px;
+    margin: 56px auto;
+    width: 80%;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.15),
+                -6px -6px 10 -1px rgba(255, 255, 255, 0.7)
+}
+
+.course {
+    display: flex;
+    flex-direction: column;
+}
+
+.labels {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #B7B7B7;
+    height: 30px;
+    border-radius: 8px;
+    margin-bottom: 0px;
+}
+
+.accordion {
+    background-color: white;
+    margin-top: 0px;
+    border-radius: 8px;
+    padding: 0;
+    margin-bottom: 5px;
+}
+.accordion li {
+    list-style: none;
+    width: 90%;
+    padding: 10px;
+}
+.accordion li label {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.accordion li label::before {
+    content: '+';
+    margin-right: 10px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.accordion input[type='checkbox'] {
+    display: none;
+}
+
+.accordion .content {
+    padding: 0 10px;
+    line-height: 26px;
+
+    max-height: 0;
+    overflow: hidden;
+    transition: all ease 0.5s
+    /* transition: max-height 0.5s, padding 0.5s;
+    transition-timing-function: linear; */
+}
+.accordion input[type='checkbox']:checked + label + .content {
+    max-height: 400px;
+    padding: 0 30px;
+}
+
+.accordion input[type='checkbox']:checked + label::before {
+    content: '-';
+    font-size: 30px;
+}
+
+
+
+.underline {
+    text-decoration: underline;
+}
+.bold {
+    font-weight: bold;
+}
