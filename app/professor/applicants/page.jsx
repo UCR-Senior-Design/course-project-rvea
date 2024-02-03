@@ -5,7 +5,7 @@ export default function Applicants() {
         <div className={styles.container}>
 
             <div className={styles.course}>
-                <h1 className={styles.underline}>CS170 - Intro to AI</h1>
+                <h1 className={`${styles.underline} ${styles.top_padding}`}>CS170 - Intro to AI</h1>
 
                 <div className={styles.labels}>
                     <h4>Name</h4>
@@ -35,7 +35,7 @@ export default function Applicants() {
 
 
             <div className={styles.course}>
-                <h1 className={styles.underline}>CS170 - Intro to AI</h1>
+                <h1 className={`${styles.underline} ${styles.top_padding}`}>CS170 - Intro to AI</h1>
 
                 <div className={styles.labels}>
                     <h4>Name</h4>

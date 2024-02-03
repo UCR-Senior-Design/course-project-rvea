@@ -8,8 +8,8 @@
     width: 80%;
     border-radius: 8px;
     padding: 20px;
-    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.15),
-                -6px -6px 10 -1px rgba(255, 255, 255, 0.7)
+    /* box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.15),
+                -6px -6px 10 -1px rgba(255, 255, 255, 0.7) */
 }
 
 .course {
@@ -54,29 +54,31 @@
     font-weight: 600;
 }
 
-.accordion input[type='checkbox'] {
-    display: none;
-}
-
+/* Collapsing Card */
 .accordion .content {
     padding: 0 10px;
     line-height: 26px;
 
     max-height: 0;
     overflow: hidden;
-    transition: all ease 0.5s
-    /* transition: max-height 0.5s, padding 0.5s;
-    transition-timing-function: linear; */
+    transition: ease-out 0.35s;
 }
+
+/* Expanding Card */
 .accordion input[type='checkbox']:checked + label + .content {
     max-height: 400px;
     padding: 0 30px;
+    transition: linear 0.3s;
 }
 
+.accordion input[type='checkbox'] {
+    display: none;
+}
 .accordion input[type='checkbox']:checked + label::before {
     content: '-';
     font-size: 30px;
 }
+
 
 
 
@@ -85,4 +87,7 @@
 }
 .bold {
     font-weight: bold;
+}
+.top_padding {
+    margin-top: 50px;
 }
