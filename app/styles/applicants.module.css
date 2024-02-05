@@ -17,20 +17,15 @@
     flex-direction: column;
 }
 
-.labels {
+.categories {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     background-color: #B7B7B7;
     height: 30px;
     border-radius: 8px;
     margin-bottom: 0px;
-}
-
-.user_labels {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    font-size: 17px;
 }
 
 .accordion {
@@ -48,7 +43,7 @@
 .accordion li label {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     font-size: 16px;
     cursor: pointer;
 }

@@ -7,7 +7,7 @@ export default function Applicants() {
             <div className={styles.course}>
                 <h1 className={`${styles.underline} ${styles.top_padding}`}>CS170 - Intro to AI</h1>
 
-                <div className={styles.labels}>
+                <div className={styles.categories}>
                     <h4>Name</h4>
                     <h4>Degree</h4>
                     <h4>GPA</h4>
@@ -20,16 +20,13 @@ export default function Applicants() {
                     <li>
                         <input type='checkbox' name='accordion' id='first' />
                         <label for='first'>
-                            <h4>Name</h4>
-                            <h4>Degree</h4>
-                            <h4>GPA</h4>
-                            <h4>Application Date</h4>
-                            <h4>Transcript</h4>
-                            <h4>Status</h4>
+                            <p>Ethan Fox</p>
+                            <p>Bachelors</p>
+                            <p>3.4</p>
+                            <p>December 8th, 2023</p>
+                            <p>Transcript</p>
+                            <p>Status</p>
                         </label>
-                        {/* <div className={styles.user_labels} for='first'>
-                            <h4>Name</h4>
-                        </div> */}
 
                         <div className={styles.content}>
                             <p className={styles.bold}>Pronouns:</p>
@@ -45,9 +42,9 @@ export default function Applicants() {
 
 
             <div className={styles.course}>
-                <h1 className={`${styles.underline} ${styles.top_padding}`}>CS170 - Intro to AI</h1>
+                <h1 className={`${styles.underline} ${styles.top_padding}`}>CS180 - Intro to Software Engineering</h1>
 
-                <div className={styles.labels}>
+                <div className={styles.categories}>
                     <h4>Name</h4>
                     <h4>Degree</h4>
                     <h4>GPA</h4>
@@ -59,7 +56,14 @@ export default function Applicants() {
                 <ul className={styles.accordion}>
                     <li>
                         <input type='checkbox' name='accordion' id='second' />
-                        <label for='second'>Ethan Fox</label>
+                        <label for='second'>
+                            <p>Ethan Fox</p>
+                            <p>Bachelors</p>
+                            <p>3.4</p>
+                            <p>December 8th, 2023</p>
+                            <p>Transcript</p>
+                            <p>Status</p>
+                        </label>
 
                         <div className={styles.content}>
                             <p className={styles.bold}>Pronouns:</p>
@@ -74,7 +78,14 @@ export default function Applicants() {
                 <ul className={styles.accordion}>
                     <li>
                         <input type='checkbox' name='accordion' id='third' />
-                        <label for='third'>Ethan Fox</label>
+                        <label for='third'>
+                            <p>Ethan Fox</p>
+                            <p>Bachelors</p>
+                            <p>3.4</p>
+                            <p>December 8th, 2023</p>
+                            <p>Transcript</p>
+                            <p>Status</p>
+                        </label>
 
                         <div className={styles.content}>
                             <p className={styles.bold}>Pronouns:</p>
@@ -88,7 +99,14 @@ export default function Applicants() {
                 <ul className={styles.accordion}>
                     <li>
                         <input type='checkbox' name='accordion' id='fourth' />
-                        <label for='fourth'>Ethan Fox</label>
+                        <label for='fourth'>
+                            <p>Ethan Fox</p>
+                            <p>Bachelors</p>
+                            <p>3.4</p>
+                            <p>December 8th, 2023</p>
+                            <p>Transcript</p>
+                            <p>Status</p>
+                        </label>
 
                         <div className={styles.content}>
                             <p className={styles.bold}>Pronouns:</p>
@@ -98,7 +116,6 @@ export default function Applicants() {
                         </div>
                     </li>
                 </ul>
-
             </div>
 
 
