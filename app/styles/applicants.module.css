@@ -19,13 +19,23 @@
 
 .categories {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
-    background-color: #B7B7B7;
+    background-color: #b7b7b7;
     height: 30px;
     border-radius: 8px;
     margin-bottom: 0px;
     font-size: 17px;
+    padding-left:1.9%;
+    padding-right: 0.8%;
+}
+
+.categories h4 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-left:15px;
+    align-items: start;
 }
 
 .accordion {
@@ -37,7 +47,6 @@
 }
 .accordion li {
     list-style: none;
-    width: 90%;
     padding: 10px;
 }
 .accordion li label {
@@ -48,10 +57,17 @@
     cursor: pointer;
 }
 
+.accordion li label p {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    align-items: start;
+}
+
 /* Put some text b4 the label text */
 .accordion li label::before {
     content: '+'; 
-    margin-right: -10px;
     font-size: 24px;
     font-weight: 600;
 }
