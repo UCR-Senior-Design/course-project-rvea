@@ -19,7 +19,17 @@ export default function Applicants() {
                 <ul className={styles.accordion}>
                     <li>
                         <input type='checkbox' name='accordion' id='first' />
-                        <label for='first'>Ethan Fox</label>
+                        <label for='first'>
+                            <h4>Name</h4>
+                            <h4>Degree</h4>
+                            <h4>GPA</h4>
+                            <h4>Application Date</h4>
+                            <h4>Transcript</h4>
+                            <h4>Status</h4>
+                        </label>
+                        {/* <div className={styles.user_labels} for='first'>
+                            <h4>Name</h4>
+                        </div> */}
 
                         <div className={styles.content}>
                             <p className={styles.bold}>Pronouns:</p>

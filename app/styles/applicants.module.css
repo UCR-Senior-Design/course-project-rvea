@@ -27,6 +27,12 @@
     margin-bottom: 0px;
 }
 
+.user_labels {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
 .accordion {
     background-color: white;
     margin-top: 0px;
@@ -42,19 +48,20 @@
 .accordion li label {
     display: flex;
     align-items: center;
-    font-size: 18px;
-    font-weight: 500;
+    justify-content: space-around;
+    font-size: 16px;
     cursor: pointer;
 }
 
+/* Put some text b4 the label text */
 .accordion li label::before {
-    content: '+';
-    margin-right: 10px;
+    content: '+'; 
+    margin-right: -10px;
     font-size: 24px;
     font-weight: 600;
 }
 
-/* Collapsing Card */
+/* Collapsing Accordion Card */
 .accordion .content {
     padding: 0 10px;
     line-height: 26px;
@@ -62,13 +69,14 @@
     max-height: 0;
     overflow: hidden;
     transition: ease-out 0.35s;
+    padding: 0 30px;
 }
 
-/* Expanding Card */
+/* Expanding Accordion Card */
 .accordion input[type='checkbox']:checked + label + .content {
     max-height: 400px;
+    transition: linear 0.35s;
     padding: 0 30px;
-    transition: linear 0.3s;
 }
 
 .accordion input[type='checkbox'] {
