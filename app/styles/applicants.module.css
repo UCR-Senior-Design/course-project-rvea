@@ -98,9 +98,39 @@
     font-size: 30px;
 }
 
+.buttons {
+    display: flex;
+    flex-direction: row;
+    border-radius: 12px;
+    padding: 6px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    margin-right: 7px;
+    cursor: pointer;
+}
+
+.resume_container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0px;
+}
+.resume {
+    margin: 0 10px;
+}
+.skills {
+    margin-bottom: 5px;
+}
 
 
 
+.green {
+    background-color: #85E538;
+}
+.red {
+    background-color: #FA6666;
+}
 .underline {
     text-decoration: underline;
 }

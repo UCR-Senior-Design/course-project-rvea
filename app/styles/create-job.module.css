@@ -8,6 +8,10 @@
     display: relative;
 }
 
+.createjob-container h2 {
+    text-decoration: underline;
+}
+
 .jobform {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
