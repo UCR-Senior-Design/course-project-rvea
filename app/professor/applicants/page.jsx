@@ -32,12 +32,14 @@ export default function Applicants() {
                 <ul className={styles.accordion}>
                     <li>
                         <input type='checkbox' name='accordion' id='first' />
-                        <label for='first'>
+                        <label for='first' className={styles.labels}>
                             <p>Ethan Fox</p>
                             <p>Bachelors</p>
                             <p>3.4</p>
                             <p>December 8th, 2023</p>
-                            <Image onClick={handleAccept} src='/doc_icon.png' width='43' height='43'></Image>
+                            <Link href='https://www.google.com' target="_blank">
+                                <Image src='/doc_icon.png' width='43' height='43'></Image>
+                            </Link>
                             {status === 'accept' ? <p className={styles.underline}>Accepted</p> :
                              status === 'decline' ? <p className={styles.underline}>Declined</p> :
                              <div className={styles.buttons}>
@@ -52,7 +54,7 @@ export default function Applicants() {
                             <p className={styles.bold}>Courses Taken: aaaaaaaaaaaaaaaaaa</p>
                             <p className={`${styles.bold} ${styles.skills}`}>Skills: aaaaaaaaaaaaaa</p>
                             <p className={`${styles.bold} ${styles.resume_container}`}>Resume:
-                                <Link href='https://google.com' target='_blank'>
+                                <Link href='https://www.google.com' target='_blank'>
                                     <Image className={styles.resume} src='/doc_icon.png' width='43' height='43'></Image>
                                 </Link>
                             </p>
