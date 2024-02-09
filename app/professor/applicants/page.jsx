@@ -37,15 +37,17 @@ export default function Applicants() {
                             <p>Bachelors</p>
                             <p>3.4</p>
                             <p>December 8th, 2023</p>
-                            <Link href='https://www.google.com' target="_blank">
-                                <Image src='/doc_icon.png' width='43' height='43'></Image>
-                            </Link>
+                            <p>
+                                <Link href='https://www.google.com' target='_blank'>
+                                    <Image className={styles.image} src='/doc_icon.png' width='43' height='43'></Image>
+                                </Link>
+                            </p>
                             {status === 'accept' ? <p className={styles.underline}>Accepted</p> :
-                             status === 'decline' ? <p className={styles.underline}>Declined</p> :
-                             <div className={styles.buttons}>
-                                <button className={`${styles.buttons} ${styles.green}`} onClick={handleAccept}>Accept</button>
-                                <button className={`${styles.buttons} ${styles.red}`} onClick={handleDecline}>Decline</button>
-                             </div>
+                                status === 'decline' ? <p className={styles.underline}>Declined</p> :
+                                    <div className={styles.buttons}>
+                                        <button className={`${styles.buttons} ${styles.green}`} onClick={handleAccept}>Accept</button>
+                                        <button className={`${styles.buttons} ${styles.red}`} onClick={handleDecline}>Decline</button>
+                                    </div>
                             }
                         </label>
 

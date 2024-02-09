@@ -26,17 +26,15 @@
     border-radius: 8px;
     margin-bottom: 0px;
     font-size: 17px;
-    padding-left: 1.9%;
-    padding-right: 0.8%;
+    padding-left: 3%;
+    padding-right: 1%;
 }
 
 .categories h4 {
     width: 100%;
     display: flex;
     flex-direction: column;
-    margin-left:15px;
-    align-items: start;
-    border: solid;
+    align-items: center;
 }
 
 .accordion {
@@ -60,13 +58,21 @@
     cursor: pointer;
 }
 
+/* added this selector */
+.accordion li label p:first-child {
+    margin-left: 20px; 
+}
+
+/* Got rid of the margin and moved it to the selector above */
 .accordion li label p {
     width: 100%;
     display: flex;
     flex-direction: row;
-    margin-left: 20px;
-    align-items: start;
-    border: solid;
+    justify-content: center;
+}
+
+.image {
+    margin: 0px;
 }
 
 /*Ignore this - i was experimenting */
