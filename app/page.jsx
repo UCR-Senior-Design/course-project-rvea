@@ -23,7 +23,7 @@ export default async function page() {
 
     if (databaseExists) {
       // Check if the collection exists
-      const collectionName = 'Student';
+      const collectionName = 'Previous Jobs';
       const collectionExists = await db.listCollections({ name: collectionName }).hasNext();
       console.log('Collection Exists:', collectionExists);
 
