@@ -12,10 +12,19 @@ export default async function page() {
       await client.connect();
       console.log('Connected to MongoDB successfully!');
       const db = client.db('UCR-CSE-Application-Tool');
-      const collection = db.collection('Student');
+      const collection = db.collection('Previous Jobs');
+      
+      console.log('Database name: ', db.databaseName)
+      console.log('Collection name: ', collection.collectionName)
   
       // Fetch data from MongoDB for server-side rendering
       const serverData = await collection.find({}).toArray();
+
+      if (serverData.length === 0) {
+        console.log('No documents found in the "Student" collection.');
+      } else {
+        console.log('Data from MongoDB:', serverData);
+      }
   
     } catch (error) {
       console.error('Error connecting to MongoDB:', error.message);
