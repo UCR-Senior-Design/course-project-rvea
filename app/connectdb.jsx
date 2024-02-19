@@ -34,8 +34,6 @@ async function connectToDatabase() {
         const serverData = await collection.find({}).toArray();
         console.log('Student Data:', serverData);
 
-
-        //[Pass in data to Student View]
         return db;        
     } else {
         console.log('Collection does not exist.');
