@@ -2,44 +2,52 @@ import { MongoClient, ServerApiVersion } from 'mongodb';
 import LoginForm from './components/LoginForm';
 
 export default async function page() {
-    const uri =
-      'mongodb+srv://ethanjfoxy:443OoaEriC1mtWbT@ucr-cse-application-too.4nsb05q.mongodb.net/?retryWrites=true&w=majority';
-    const client = new MongoClient(uri, {
-      serverApi: ServerApiVersion.v1,
-    });
-  
-    try {
-      await client.connect();
-      console.log('Connected to MongoDB successfully!');
-      const db = client.db('UCR-CSE-Application-Tool');
-      const collection = db.collection('Previous Jobs');
-      
-      console.log('Database name: ', db.databaseName)
-      console.log('Collection name: ', collection.collectionName)
-  
-      // Fetch data from MongoDB for server-side rendering
-      const serverData = await collection.find({}).toArray();
+  const uri =
+    'mongodb+srv://ethanjfoxy:443OoaEriC1mtWbT@ucr-cse-application-too.4nsb05q.mongodb.net/?retryWrites=true&w=majority';
+  const client = new MongoClient(uri, {
+    serverApi: ServerApiVersion.v1,
+  });
 
-      if (serverData.length === 0) {
-        console.log('No documents found in the "Student" collection.');
-      } else {
-        console.log('Data from MongoDB:', serverData);
-      }
-  
-    } catch (error) {
-      console.error('Error connecting to MongoDB:', error.message);
-      return { props: { serverData: [] } }; 
-    } finally {
-      await client.close();
-    }
+  try {
+    await client.connect();
+    console.log('Connected to MongoDB uri!');
     
+    const db = client.db("UCR_CSE_APP");
+    const databaseName = db.databaseName;
+    console.log('Database:', databaseName);
+
+    // Check if the database exists
+    const collections = await db.listCollections().toArray();
+    const databaseExists = collections.length > 0;
+    console.log('Database Exists:', databaseExists);
+
+    if (databaseExists) {
+      // Check if the collection exists
+      const collectionName = 'Previous Jobs';
+      const collectionExists = await db.listCollections({ name: collectionName }).hasNext();
+      console.log('Collection Exists:', collectionExists);
+
+      if (collectionExists) {
+        const collection = db.collection(collectionName);
+
+        // Check if there are any documents in the collection
+        const serverData = await collection.find({}).toArray();
+        console.log('Student Data:', serverData);
+        
+      } else {
+        console.log('Collection does not exist.');
+      }
+    } else {
+      console.log('Database does not exist.');
+    }
+  } catch (error) {
+    console.error('Error connecting to MongoDB:', error.message);
+  } finally {
+    await client.close();
+    console.log('MongoDB connection closed.');
+  }
+
   return (
     <LoginForm></LoginForm>
   );
 }
-
-// export async function getStaticProps() {
-//   const serverData = await getStudents();
-//   print("connected")
-//   return { props: { serverData } };
-// }
