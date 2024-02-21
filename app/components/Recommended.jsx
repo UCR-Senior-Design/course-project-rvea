@@ -1,151 +1,151 @@
 import styles from '../styles/Recommended.module.css'
 
 
-const dummyData = [{
-    class_name: 'MATH 9C',
-    position: 'Grader',
-    name: 'Professor Kirkland',
-    quarter: 'Winter and Spring Quarter',
-    wage: '$120/hour',
-    seats: '5',
-},
-{
-    class_name: 'MATH 9C',
-    position: 'TA',
-    name: 'Professor Kirkland',
-    quarter: 'Winter and Spring Quarter',
-    wage: '$120/hour',
-    seats: '5',
-},
-{
-    class_name: 'MATH 9C',
-    position: 'Reader',
-    name: 'Professor Kirkland',
-    quarter: 'Winter and Spring Quarter',
-    wage: '$120/hour',
-    seats: '5',
-},
-{
-    class_name: 'STAT 105',
-    position: 'Grader',
-    name: 'Professor Kleenex',
-    quarter: 'Winter and Spring Quarter',
-    wage: '$120/hour',
-    seats: '5',
-},
-{
-    class_name: 'STAT 105',
-    position: 'TA',
-    name: 'Professor Kleenex',
-    quarter: 'Winter and Spring Quarter',
-    wage: '$120/hour',
-    seats: '5',
-},
-{
-    class_name: 'STAT 105',
-    position: 'Reader',
-    name: 'Professor Kleenex',
-    quarter: 'Winter and Spring Quarter',
-    wage: '$120/hour',
-    seats: '5',
-},
-{
-    class_name: 'CS 100',
-    position: 'Grader',
-    name: 'Professor Dell',
-    quarter: 'Winter and Spring Quarter',
-    wage: '$120/hour',
-    seats: '5',
-},
-{
-    class_name: 'CS 100',
-    position: 'TA',
-    name: 'Professor Dell',
-    quarter: 'Winter and Spring Quarter',
-    wage: '$120/hour',
-    seats: '5',
-},
-{
-    class_name: 'CS 100',
-    position: 'Reader',
-    name: 'Professor Dell',
-    quarter: 'Winter and Spring Quarter',
-    wage: '$120/hour',
-    seats: '5',
-},
-{
-    class_name: 'MATH 9A',
-    position: 'Grader',
-    name: 'Professor Chair',
-    quarter: 'Winter and Spring Quarter',
-    wage: '$120/hour',
-    seats: '5',
-},
-{
-    class_name: 'MATH 9A',
-    position: 'TA',
-    name: 'Professor Chair',
-    quarter: 'Winter and Spring Quarter',
-    wage: '$120/hour',
-    seats: '5',
-},
-{
-    class_name: 'MATH 9A',
-    position: 'Reader',
-    name: 'Professor Chair',
-    quarter: 'Winter and Spring Quarter',
-    wage: '$120/hour',
-    seats: '5',
-},
-{
-    class_name: 'CS 111',
-    position: 'Grader',
-    name: 'Professor Kirkland',
-    quarter: 'Winter and Spring Quarter',
-    wage: '$120/hour',
-    seats: '5',
-},
-{
-    class_name: 'CS 111',
-    position: 'TA',
-    name: 'Professor Kirkland',
-    quarter: 'Winter and Spring Quarter',
-    wage: '$120/hour',
-    seats: '5',
-},
-{
-    class_name: 'CS 111',
-    position: 'Reader',
-    name: 'Professor Kirkland',
-    quarter: 'Winter and Spring Quarter',
-    wage: '$120/hour',
-    seats: '5',
-},
-{
-    class_name: 'MATH 9B',
-    position: 'Grader',
-    name: 'Professor Cup',
-    quarter: 'Winter and Spring Quarter',
-    wage: '$120/hour',
-    seats: '5',
-},
-{
-    class_name: 'MATH 9B',
-    position: 'TA',
-    name: 'Professor Cup',
-    quarter: 'Winter and Spring Quarter',
-    wage: '$120/hour',
-    seats: '5',
-},
-{
-    class_name: 'MATH 9B',
-    position: 'Reader',
-    name: 'Professor Cup',
-    quarter: 'Winter and Spring Quarter',
-    wage: '$120/hour',
-    seats: '5',
-},
-];
+// const dummyData = [{
+//     class_name: 'MATH 9C',
+//     position: 'Grader',
+//     name: 'Professor Kirkland',
+//     quarter: 'Winter and Spring Quarter',
+//     wage: '$120/hour',
+//     seats: '5',
+// },
+// {
+//     class_name: 'MATH 9C',
+//     position: 'TA',
+//     name: 'Professor Kirkland',
+//     quarter: 'Winter and Spring Quarter',
+//     wage: '$120/hour',
+//     seats: '5',
+// },
+// {
+//     class_name: 'MATH 9C',
+//     position: 'Reader',
+//     name: 'Professor Kirkland',
+//     quarter: 'Winter and Spring Quarter',
+//     wage: '$120/hour',
+//     seats: '5',
+// },
+// {
+//     class_name: 'STAT 105',
+//     position: 'Grader',
+//     name: 'Professor Kleenex',
+//     quarter: 'Winter and Spring Quarter',
+//     wage: '$120/hour',
+//     seats: '5',
+// },
+// {
+//     class_name: 'STAT 105',
+//     position: 'TA',
+//     name: 'Professor Kleenex',
+//     quarter: 'Winter and Spring Quarter',
+//     wage: '$120/hour',
+//     seats: '5',
+// },
+// {
+//     class_name: 'STAT 105',
+//     position: 'Reader',
+//     name: 'Professor Kleenex',
+//     quarter: 'Winter and Spring Quarter',
+//     wage: '$120/hour',
+//     seats: '5',
+// },
+// {
+//     class_name: 'CS 100',
+//     position: 'Grader',
+//     name: 'Professor Dell',
+//     quarter: 'Winter and Spring Quarter',
+//     wage: '$120/hour',
+//     seats: '5',
+// },
+// {
+//     class_name: 'CS 100',
+//     position: 'TA',
+//     name: 'Professor Dell',
+//     quarter: 'Winter and Spring Quarter',
+//     wage: '$120/hour',
+//     seats: '5',
+// },
+// {
+//     class_name: 'CS 100',
+//     position: 'Reader',
+//     name: 'Professor Dell',
+//     quarter: 'Winter and Spring Quarter',
+//     wage: '$120/hour',
+//     seats: '5',
+// },
+// {
+//     class_name: 'MATH 9A',
+//     position: 'Grader',
+//     name: 'Professor Chair',
+//     quarter: 'Winter and Spring Quarter',
+//     wage: '$120/hour',
+//     seats: '5',
+// },
+// {
+//     class_name: 'MATH 9A',
+//     position: 'TA',
+//     name: 'Professor Chair',
+//     quarter: 'Winter and Spring Quarter',
+//     wage: '$120/hour',
+//     seats: '5',
+// },
+// {
+//     class_name: 'MATH 9A',
+//     position: 'Reader',
+//     name: 'Professor Chair',
+//     quarter: 'Winter and Spring Quarter',
+//     wage: '$120/hour',
+//     seats: '5',
+// },
+// {
+//     class_name: 'CS 111',
+//     position: 'Grader',
+//     name: 'Professor Kirkland',
+//     quarter: 'Winter and Spring Quarter',
+//     wage: '$120/hour',
+//     seats: '5',
+// },
+// {
+//     class_name: 'CS 111',
+//     position: 'TA',
+//     name: 'Professor Kirkland',
+//     quarter: 'Winter and Spring Quarter',
+//     wage: '$120/hour',
+//     seats: '5',
+// },
+// {
+//     class_name: 'CS 111',
+//     position: 'Reader',
+//     name: 'Professor Kirkland',
+//     quarter: 'Winter and Spring Quarter',
+//     wage: '$120/hour',
+//     seats: '5',
+// },
+// {
+//     class_name: 'MATH 9B',
+//     position: 'Grader',
+//     name: 'Professor Cup',
+//     quarter: 'Winter and Spring Quarter',
+//     wage: '$120/hour',
+//     seats: '5',
+// },
+// {
+//     class_name: 'MATH 9B',
+//     position: 'TA',
+//     name: 'Professor Cup',
+//     quarter: 'Winter and Spring Quarter',
+//     wage: '$120/hour',
+//     seats: '5',
+// },
+// {
+//     class_name: 'MATH 9B',
+//     position: 'Reader',
+//     name: 'Professor Cup',
+//     quarter: 'Winter and Spring Quarter',
+//     wage: '$120/hour',
+//     seats: '5',
+// },
+// ];
 
 {/*
     return(
@@ -176,19 +176,20 @@ const dummyData = [{
             </>
 */}
 
-export default function Recommended() {
+export default function Recommended(props) {
+    const recjobs = props.recjobs;
     return(
         <div className={styles.bg}>
             <div className={styles['listings-container']}>
-                {dummyData.map((data) => {
+                {recjobs.map((data, index) => {
                     return (
-                        <div className={styles.cards}>
+                        <div className={styles.cards} key={index}>
                             <div>
-                                <h3 className={`${styles.text} ${styles.title}`}>{data.class_name}</h3>
-                                <p className={`${styles.text} ${styles.name}`}>{data.name}</p><br></br>
-                                <p className={`${styles.text} ${styles.quarter}`}>{data.quarter}</p>
+                                <h3 className={`${styles.text} ${styles.title}`}>{data.Title}</h3>
+                                <p className={`${styles.text} ${styles.name}`}>{data.Professor}</p><br></br>
+                                <p className={`${styles.text} ${styles.quarter}`}>Term: {data.Term}</p>
                                 <p className={styles.text}>Wage: <span className={styles.wage}>{data.wage}</span></p>
-                                <p className={styles.text}><span className={styles.seats}>{data.seats}</span></p>
+                                <p className={styles.text}>Remaining Seats: <span className={styles.seats}>{data.seats}</span></p>
                             </div>
                         </div>
                     )

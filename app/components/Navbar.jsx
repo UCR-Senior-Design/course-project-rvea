@@ -11,9 +11,9 @@ export default function Navbar() {
             <nav className={styles.navbar}>
                 <ul className={`${styles.navbar_list} ${styles.navbar_list_primary}`}>
                     <li className={styles.navbar_item}><a className={styles.navbar_link} href="/student/job-listings">Job Listings</a></li>
-                    <li className={styles.navbar_item}><a className={styles.navbar_link} href="/student/profile">Profile</a></li>
                     <li className={styles.navbar_item}><a className={styles.navbar_link} href="/student/rec-jobs">Recommended  Jobs</a></li>
                     <li className={styles.navbar_item}><a className={styles.navbar_link} href="/student/applied-jobs">Applied Jobs</a></li>
+                    <li className={styles.navbar_item}><a className={styles.navbar_link} href="/student/profile">Profile</a></li>
                 </ul>
                 <ul className={styles.navbar_list}>
                     <li className={styles.navbar_item}><a className={styles.navbar_link} href="/student/profile">Current User</a></li>
