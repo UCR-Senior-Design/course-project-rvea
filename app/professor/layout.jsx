@@ -1,18 +1,18 @@
 import Navbar from '../components/Navbar.jsx'
 
 export default function ProfessorLayout({ children }) {
+    const routes = [
+        { name: 'Create Job', link: '/professor/create-job'},
+        { name: 'Applicants', link: '/professor/applicants' },
+        { name: 'Profile', link: '/professor/profile'}
+    ];
+
     return (
         <html lang="en">
             <body>
-                <Navbar />
+                <Navbar routes={routes}/>
                 {children}
             </body>
         </html>
     )
 }
-
-//Fix Navbar to pass in prop routes in layout page for student and professor?
-/*
-1) pass in a props list (in that list is the route_name(1) and the route_link(2))
-2) create list items individually in a loop
-*/
