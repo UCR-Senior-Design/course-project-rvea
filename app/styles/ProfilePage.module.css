@@ -33,6 +33,18 @@
     align-items: center;
 }
 
+.skills_upper_left_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+}
+
+.skills_upper_right_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: right;
+}
+
 .skills_lower_container {
     background-color: #E4DFD0;
     height: 450px;
@@ -95,9 +107,11 @@
     border-radius: 20px;
 }
 
+/*
 .personal_info_container {
 
 }
+*/
 
 .personal_info_upper_container {
     display: flex;
@@ -144,4 +158,19 @@
 
 .bg_yellow {
     background: var(--yellow);
+}
+
+.pill {
+    font-size: 1em;
+    padding: 0.5em 1em;
+    margin: 0.25em;
+    border-radius: 1em;
+    border: none;
+    outline: none;
+    background: white;
+    cursor: pointer;
+}
+
+.pill_large_text {
+    text-align: left;
 }
