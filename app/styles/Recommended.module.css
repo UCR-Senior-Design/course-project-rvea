@@ -4,6 +4,7 @@
     margin: auto;
     background-color: #E2DFD1;
     width: 90vw;
+    border-radius: 5px;
     /*height: 66.67vw; */
 }
 
@@ -12,7 +13,6 @@
     background-color: #E2DFD1;
     width: 50%;
     min-width: 350px;
-    border-radius: 5px;
     display: flex;
     flex-direction: column;
     overflow: auto;
@@ -25,6 +25,8 @@
     padding: 10px;
     border: solid 2px;
     border-color: gray;
+    border-radius: 8px;
+    margin: 3px 0;
 }
 .rankings {
     display: flex;

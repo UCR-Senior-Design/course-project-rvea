@@ -32,7 +32,7 @@ async function connectToDatabase() {
 
         // Check if there are any documents in the collection
         const serverData = await collection.find({}).toArray();
-        console.log('Student Data:', serverData);
+        //console.log('Student Data:', serverData);
 
         return db;        
     } else {

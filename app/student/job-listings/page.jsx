@@ -21,7 +21,6 @@ async function getJobListings() {
     catch {
         console.log('could not connect to db for job listings')
     }
-
 }
 
 export default async function JobListings() {
@@ -30,7 +29,6 @@ export default async function JobListings() {
     for (let job in jobListings) {
         jobListings[job]._id = 0
     }
-    // console.log(getJobListings());
     return(
         <>
             <Searchbar />

@@ -4,8 +4,7 @@ import LoginForm from './components/LoginForm';
 import { connectToDatabase } from './connectdb';
 
 export default async function page() {
-    connectToDatabase();
-
+  connectToDatabase();
   return (
     <LoginForm></LoginForm>
   );
