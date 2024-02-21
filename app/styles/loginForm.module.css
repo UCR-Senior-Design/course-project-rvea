@@ -60,7 +60,7 @@
     padding:0 10px;
 }
 
-.button {
+.button_blue {
     cursor: pointer;
     font-weight: bold;
     color: white;
@@ -69,12 +69,27 @@
     width: 296px;
     height: 56px;
     border: none;
-}
-
-.bg_blue {
+    transition: all 0.5s;
     background: var(--blue);
 }
 
-.bg_yellow {
-    background: var(--yellow)
+.button_blue:hover {
+    background: var(--blue_hover);
+}
+
+.button_yellow {
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+    border-radius: 40px;
+    align-self: center;
+    width: 296px;
+    height: 56px;
+    border: none;
+    transition: all 0.5s;
+    background: var(--yellow);
+}
+
+.button_yellow:hover {
+    background: var(--yellow_hover);
 }

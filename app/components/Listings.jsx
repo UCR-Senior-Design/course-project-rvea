@@ -17,9 +17,9 @@ export default function Listings(props) {
                             <div className={styles.cards} key={index} onClick={() => setJobIndex(index)}>
                                 <Image className={styles['card-logo']} src='/pc.png' width='60' height='60'></Image>
                                 <div>
-                                    <h3 className={`${styles.text} ${styles.title}`}>{data.jobTitle}</h3>
-                                    <p className={`${styles.text} ${styles.name}`}>{data.professor}</p><br></br>
-                                    <p className={`${styles.text} ${styles.quarter}`}>Term: {data.jobTerm}</p>
+                                    <h3 className={`${styles.text} ${styles.title}`}>{data.Title}</h3>
+                                    <p className={`${styles.text} ${styles.name}`}>{data.Professor}</p><br></br>
+                                    <p className={`${styles.text} ${styles.quarter}`}>Term: {data.Term}</p>
                                     <p className={styles.text}>Wage: <span className={styles.wage}>{data.hourlyWage}</span></p>
                                     <p className={styles.text}>Remaining Seats: <span className={styles.seats}>{data.totalSeats}</span></p>
                                 </div>
@@ -32,12 +32,12 @@ export default function Listings(props) {
             <div className={styles['details-container']}>
                 <div className={styles.details}>
 
-                    <h1>{listings[jobIndex].jobTitle}</h1>
+                    <h1>{listings[jobIndex].Title}</h1>
                     <div className={styles.subtitle}>
                         <Image className={styles.no_margin} src='/pc.png' width='60' height='60'></Image>
                         <div>
-                            <p className={`${styles.subtitle_text} ${styles.color_bold}`}>{listings[jobIndex].professor}</p>
-                            <p className={`${styles.subtitle_text} ${styles.color_gray} ${styles.no_margin}`}>Term: {listings[jobIndex].jobTerm}</p>
+                            <p className={`${styles.subtitle_text} ${styles.color_bold}`}>{listings[jobIndex].Professor}</p>
+                            <p className={`${styles.subtitle_text} ${styles.color_gray} ${styles.no_margin}`}>Term: {listings[jobIndex].Term}</p>
                         </div>
                     </div>
 
@@ -59,7 +59,7 @@ export default function Listings(props) {
                     <p className={styles.prereq_text}><span className={styles.color_bold}>Prerequisite(s): </span><span className={styles.color_gray}>{listings[jobIndex].prerequisites}</span></p>
 
                     <h2 className={`${styles.underline} ${styles.no_margin}`}>Role Description</h2>
-                    <p className={styles.description}>{listings[jobIndex].jobDescription}</p>
+                    <p className={styles.description}>{listings[jobIndex].Description}</p>
                     <button className={`${styles.button} ${styles.color_bold}`}>Apply</button>
                 </div>
             </div>
