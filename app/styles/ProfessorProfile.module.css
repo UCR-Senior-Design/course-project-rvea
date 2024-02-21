@@ -1,0 +1,80 @@
+.profileContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 58px;
+}
+
+.col {
+    background : var(--bg_darker);
+    padding: 10px 10px;
+    border-radius: 8px;
+}
+
+.col + .col {
+    margin-top: 24px;
+}
+
+.col_entry{
+    background: var(--white);
+    border-radius: 8px;
+}
+
+.card_top {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card {
+    width: 680px;
+    padding: 8px 16px;
+}
+
+.bar {
+    height: 600px;
+    width: 336px;
+    padding: 8px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bar_entry {
+    background: var(--blue);
+    border-radius: 8px;
+    color: var(--white);
+    padding: 8px 24px;
+    transition: all 0.5s; 
+    cursor: pointer;
+}
+
+h3 + .bar_entry {
+    margin-top: 24px;
+}
+
+.bar_entry + .bar_entry {
+    margin-top: 16px;
+}
+
+.btn {
+    border: none;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    color: var(--white);
+    background: var(--yellow);
+    transition: all 0.5s; 
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: var(--yellow_hover);
+}
+
+.bar_entry:hover {
+    background: var(--blue_hover);
+}

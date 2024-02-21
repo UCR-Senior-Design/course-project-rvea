@@ -3,11 +3,11 @@ import { authConfig } from './auth.config';
 import Credentials from 'next-auth/providers/credentials';
 import { promises as fs } from "fs";
 
-async function getUser(email) {
+async function getUser(email, password) {
     const file = await fs.readFile(process.cwd() + "/json/usersMockData.json", "utf-8");
     const users = JSON.parse(file).users;
 
-    if (email in users) {
+    if (email in users && password == users[email]) {
         return {email, password: users[email]};
     }
     else {
@@ -22,7 +22,7 @@ export const { auth, signIn, signOut } = NextAuth({
             async authorize(credentials) {
                 const email = credentials.email;
                 const password = credentials.password;
-                const user = await getUser(email);
+                const user = await getUser(email, password);
                 return user; 
             }
         })],
