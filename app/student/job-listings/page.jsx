@@ -26,9 +26,7 @@ async function getJobListings() {
 export default async function JobListings() {
     //const jobListings = await getJobListingsMockData();  //fetch data
     const jobListings = await getJobListings();
-    for (let job in jobListings) {
-        jobListings[job]._id = 0
-    }
+    
     return(
         <>
             <Searchbar />
