@@ -9,16 +9,14 @@ export default function Listings(props) {
     const [jobIndex, setJobIndex] = useState(0);
 
     const handleApply = async (jobId) => {
-        console.log("Trying to apply for job with ID:", jobId); // Check if handleApply is being called
+        console.log("Trying to apply for job with ID:", jobId);
         try {
             const db = await connectToDatabase();
             const collection = db.collection('Previous Jobs');
             await collection.updateOne({ _id: jobId }, { $set: { applied: true } });
             console.log('Application submitted successfully!');
-            // Optionally, update the UI to indicate that the application was successful
         } catch (error) {
             console.error('Error submitting application:', error);
-            // Optionally, handle errors and update the UI accordingly
         }
     };
 
@@ -80,7 +78,7 @@ export default function Listings(props) {
 
                     <h2 className={`${styles.underline} ${styles.no_margin}`}>Role Description</h2>
                     <p className={styles.description}>{listings[jobIndex].Description}</p>
-                    <button className={`${styles.button} ${styles.color_bold}`} onClick={() => handleApply(listings[jobIndex]._id)}>Apply</button>
+                    <button className={`${styles.button} ${styles.color_bold}`} onClick={() => console.log("Button clicked")}>Apply</button>
                 </div>
             </div>
         </div>
