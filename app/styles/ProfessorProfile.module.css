@@ -28,6 +28,29 @@
     justify-content: space-between;
 }
 
+.block {
+    height: 10px;
+    width: 400px;
+    margin-bottom: 15.6px;
+}
+
+.nothidden {
+    display: block;
+    animation: fade-in 800ms forwards;
+    animation: slide-up 350ms forwards;
+}
+
+.hidden{
+    display: none;
+    animation: fade-out 350ms forwards;
+}
+
+.col_entry textarea {
+    margin-bottom: 8px;
+    font-family: 'Roboto', sans-serif; 
+    font-size: 15px;
+}
+
 .card {
     width: 680px;
     padding: 8px 16px;
@@ -77,4 +100,31 @@ h3 + .bar_entry {
 
 .bar_entry:hover {
     background: var(--blue_hover);
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes slide-up {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
 }
