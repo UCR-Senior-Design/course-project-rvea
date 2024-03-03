@@ -36,13 +36,13 @@
 
 .nothidden {
     display: block;
-    animation: fade-in 800ms forwards;
-    animation: slide-up 350ms forwards;
+    animation: fade-in 400ms forwards;
+    animation: slide-up 400ms forwards;
 }
 
 .hidden{
     display: none;
-    animation: fade-out 350ms forwards;
+    animation: fade-out 400ms forwards;
 }
 
 .col_entry textarea {
