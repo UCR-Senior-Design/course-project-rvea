@@ -19,10 +19,9 @@ export default function LoginForm() {
                     <input id="password" name="password" className={`${styles.border_rounded_8} ${styles.border_grey}`} placeholder="Password" type="password" />
                     <button className={`${styles.button_blue} ${styles.margin_top_24}`}> Sign in </button>
                     <h5 className={styles.line_through}><span>or</span></h5>
-                    <Link href="/register">
+                    <Link href="/register" className={`${styles.button_yellow} ${styles.margin_btm_24}`}>
                     <button className={`${styles.button_yellow} ${styles.margin_btm_24}`}>Register Now</button>
                     </Link>
-
                 </div>
             </form>
         </>
