@@ -1,13 +1,18 @@
 'use client'
 import styles from '../styles/Listings.module.css'
-import {useState} from 'react'
+import {useState, useEffect, useRef} from 'react'
 import Image from 'next/image'
 
-
 export default function Listings(props) {
-    const listings = props.jobListings;
     const [jobIndex, setJobIndex] = useState(0);
+    const [listings, setListings] = useState(props.jobListings);
 
+    //After the newly filtered listings is passed through as props,
+    //update the listings in here to the new one via useEffect
+    useEffect(() => {
+        setListings(props.jobListings);
+    }, [props.jobListings]);
+    
     return (
         <div className={styles.container}>
 
@@ -66,8 +71,3 @@ export default function Listings(props) {
         </div>
     )
 }
-
-
-//*display green container upon submission?
-//Fixme: scrollbar on outside of details container? (nit picky)
-//pfp json data is defaultly included in span?
