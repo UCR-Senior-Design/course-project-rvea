@@ -1,20 +1,23 @@
 .container {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
+    /*grid-template-rows: auto 1fr; */
     grid-gap: 2em;
     margin: 1em;
+    align-items: start
 }
 
 .nested_container_left {
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
+    /* grid-template-rows: 1fr 1fr 1fr; */
+    grid-template-rows: auto auto auto;
     grid-gap: 2em;
 }   
 
 .nested_container_middle {
     display: grid;
-    grid-template-rows: 2fr 2fr;
-    grid-gap: 2m;
+    grid-template-rows: auto auto;
+    grid-gap: 2em;
 }
 
 .nested_container_right {
@@ -24,7 +27,7 @@
 }
 
 .skills_container {
-    grid-template-rows: 1fr 4fr;
+    grid-template-rows: auto 1fr;
 }
 
 .skills_upper_container {
@@ -39,22 +42,24 @@
     align-items: left;
 }
 
-.skills_upper_right_container {
+.skills_upper_right_container { 
     display: flex;
     justify-content: space-between;
-    align-items: right;
+    align-items: left;
 }
 
 .skills_lower_container {
     background-color: #E4DFD0;
-    height: 450px;
+    min-height: 450px;
+    height: auto;
     padding: 5px;
     grid-auto-columns: minmax(250px, auto);
     border-radius: 20px;
 }
 
 .courses_container {
-    grid-template-rows: 1fr 4fr;
+    /* grid-template-rows: 1fr 4fr; */
+    grid-template-rows: auto 1fr;
 }
 
 .courses_upper_container {
@@ -63,16 +68,29 @@
     align-items: center;
 }
 
+.courses_upper_left_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+}
+
+.courses_upper_right_container { 
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+}
+
 .courses_lower_container {
     background-color: #E4DFD0;
-    height: 450px;
+    min-height: 450px;
+    height: auto;
     padding: 5px;
     grid-auto-columns: minmax(250px, auto);
     border-radius: 20px;
 }
 
 .year_container {
-    grid-template-rows: 1fr 4fr;
+    grid-template-rows: auto 1fr;
 }
 
 .year_upper_container {
@@ -81,37 +99,70 @@
     align-items: center;
 }
 
+.year_upper_left_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+}
+
+.year_upper_right_container { 
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+}
+
+
 .year_lower_container {
     background-color: #E4DFD0;
-    height: 450px;
+    min-height: 450px; 
+    height: auto;
     padding: 5px;
     grid-auto-columns: minmax(250px, auto);
     border-radius: 20px;
 }
 
 .resume_container {
-    grid-template-rows: 1fr 4fr;
+    grid-template-rows: auto 1fr;
+    align-self: start;
 }
 
 .resume_upper_container {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center;   
 }
+
 
 .resume_lower_container {
     background-color: #E4DFD0;
-    height: 700px;
+    min-height: 1000px;
+    height: auto;
     padding: 5px;
     grid-auto-columns: minmax(250px, auto);
     border-radius: 20px;
 }
 
-/*
-.personal_info_container {
-
+.resume_lower_lower_container {
+    display: flex;
+    flex-direction: column;
+    min-height: 1000px;  
+    height: auto;
+    padding: 5px;
+    border-radius: 20px;
+    overflow: auto; 
 }
-*/
+
+.resume_lower_lower_container iframe {
+    border: none; 
+    margin-bottom: 10px; 
+    border-radius: 20px;
+}
+
+.personal_info_container {
+    grid-template-rows: auto 1fr;
+    align-self: start;
+}
+
 
 .personal_info_upper_container {
     display: flex;
@@ -119,16 +170,30 @@
     align-items: center;
 }
 
+.personal_info_upper_left_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+}
+
+.personal_info_upper_right_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+}
+
 .personal_info_lower_container {
     background-color: #E4DFD0;
-    height: 750px;
+    min-height: 750px; 
+    height: auto;
     padding: 5px;
     grid-auto-columns: minmax(250px, auto);
     border-radius: 20px;
 }
 
 .relevant_experience_container {
-    grid-template-rows: 1fr 4fr;
+    grid-template-rows: auto 1fr;
+    align-self: start;
 }
 
 .relevant_experience_upper_container {
@@ -137,9 +202,22 @@
     align-items: center;
 }
 
+.relevant_experience_upper_left_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+}
+
+.relevant_experience_upper_right_container { 
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+}
+
 .relevant_experience_lower_container {
     background-color: #E4DFD0;
-    height: 650px;
+    min-height: 650px; 
+    height: auto;
     padding: 5px;
     grid-auto-columns: minmax(250px, auto);
     border-radius: 20px;
@@ -154,6 +232,7 @@
     height: 40px;
     border: none;
     transition: all 0.5s;
+    margin: 0.5em;
 }
 
 .bg_yellow {
