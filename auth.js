@@ -2,16 +2,23 @@ import NextAuth from 'next-auth';
 import { authConfig } from './auth.config';
 import Credentials from 'next-auth/providers/credentials';
 import { promises as fs } from "fs";
+import { connectToDatabase } from './app/connectdb';
 
 async function getUser(email, password) {
-    const file = await fs.readFile(process.cwd() + "/json/usersMockData.json", "utf-8");
-    const users = JSON.parse(file).users;
+    try {
+        const db = await connectToDatabase();
+        let user = await db.collection("Student").find({"Email" : email}).toArray();
+        user = (user.length ? user[0] : 0);
 
-    if (email in users && password == users[email]) {
-        return {email, password: users[email]};
+        if (user && password == user.password) {
+            return { email, password: user[email] };
+        }
+        else {
+            return null;
+        }
     }
-    else {
-        return null;
+    catch {
+        console.log("error with signing in a user");
     }
 }
 
@@ -23,7 +30,7 @@ export const { auth, signIn, signOut } = NextAuth({
                 const email = credentials.email;
                 const password = credentials.password;
                 const user = await getUser(email, password);
-                return user; 
+                return user;
             }
         })],
 });
