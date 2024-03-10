@@ -2,6 +2,7 @@
 import styles from '../styles/Listings.module.css'
 import {useState, useEffect, useRef} from 'react'
 import Image from 'next/image'
+import { saveAppliedJobs } from '../lib/actions'
 
 export default function Listings(props) {
     const [jobIndex, setJobIndex] = useState(0);
@@ -17,6 +18,7 @@ export default function Listings(props) {
     function applyClick(event) {
         event.preventDefault();
         alert('Job Applied!')
+        saveAppliedJobs()
     }
     
     return (

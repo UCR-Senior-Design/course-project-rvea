@@ -44,3 +44,49 @@ export async function saveProfessorInfo(mode, profileInfo) {
         return ;
     }
 }
+
+export async function saveAppliedJobs() {
+    try {
+        const db = await connectToDatabase();
+        console.log("student successfully applied to a job");
+        return;
+
+        //professor creates posting/job object, we save student id's in attribute of that job posting [into job collection]
+        //also save into Student Applied Jobs collection [to show on student view]
+                    //student id
+            //job_ids[]
+    }
+    catch (err) {
+        console.log(err);
+        console.log('could not connect to db for student applications');
+        return;
+    }
+}
+
+export async function createJobPosting(createJobInfo) {
+    console.log('here')
+    try{
+        //Store job posting by creting a new document
+        //const db = connectToDatabase();
+        console.log(createJobInfo)
+        //const filter = { _id: new ObjectId(createJobInfo._id)};
+        // const createDoc = {
+        //     $set: {
+        //         jobtitle: profileInfo.email,
+        //         phone_number: profileInfo.phone_number,
+        //         pronouns: profileInfo.pronouns,
+        //         description: profileInfo.description
+        //     },
+        // };
+
+        //save document to database
+            //db.collection("Professor").updateOne(filter, updateDoc);
+        console.log('successfully created a job')
+        return;
+    }
+    catch (err) {
+        console.log(err);
+        console.log('could not create job posting');
+        return;
+    }
+}
