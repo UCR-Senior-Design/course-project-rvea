@@ -1,3 +1,15 @@
+.all_container {
+    display: grid;
+    grid-template-rows: auto;
+    align-items: center
+}
+
+.all_upper_container {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
 .container {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
@@ -45,7 +57,7 @@
 .skills_upper_right_container { 
     display: flex;
     justify-content: space-between;
-    align-items: left;
+    align-items: right;
 }
 
 .skills_lower_container {
@@ -77,7 +89,7 @@
 .courses_upper_right_container { 
     display: flex;
     justify-content: space-between;
-    align-items: left;
+    align-items: right;
 }
 
 .courses_lower_container {
@@ -108,7 +120,7 @@
 .year_upper_right_container { 
     display: flex;
     justify-content: space-between;
-    align-items: left;
+    align-items: right;
 }
 
 
@@ -130,6 +142,18 @@
     display: flex;
     justify-content: space-between;
     align-items: center;   
+}
+
+.resume_upper_left_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: left;   
+}
+
+.resume_upper_right_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: right;   
 }
 
 
@@ -179,7 +203,7 @@
 .personal_info_upper_right_container {
     display: flex;
     justify-content: space-between;
-    align-items: left;
+    align-items: right;
 }
 
 .personal_info_lower_container {
@@ -211,7 +235,7 @@
 .relevant_experience_upper_right_container { 
     display: flex;
     justify-content: space-between;
-    align-items: left;
+    align-items: right;
 }
 
 .relevant_experience_lower_container {
@@ -235,6 +259,34 @@
     margin: 0.5em;
 }
 
+.reset_button {
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+    border-radius: 40px;
+    width: 70px;
+    height: 40px;
+    border: none;
+    transition: all 0.5s;
+    margin: 0.5em;
+    justify-content: center;
+    align-items: center;
+}
+
+.large_reset_button {
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+    border-radius: 40px;
+    padding: 0.5em 1em;
+    border: none;
+    transition: all 0.5s;
+    margin: 0.5em;
+    justify-content: center;
+    align-items: center;
+}
+
 .bg_yellow {
     background: var(--yellow);
 }
@@ -252,4 +304,22 @@
 
 .pill_large_text {
     text-align: left;
+}
+
+.formGroup {
+    margin-bottom: 20px;
+}
+
+.inputField {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.formLabel {
+    display: block;
+    margin-bottom: 5px;
 }
