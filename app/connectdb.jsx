@@ -45,10 +45,19 @@ async function connectToDatabase() {
     console.error('Error connecting to MongoDB:', error.message);
     }
     // finally {
-    // await client.close();
-    // console.log('MongoDB connection closed.');
+    await client.close();
+     console.log('MongoDB connection closed.');
     // }
 }
 
 
-export { connectToDatabase };
+async function closeDatabase(client) {
+    try {
+        await client.close();
+        console.log('MongoDB connection closed.');
+    } catch (error) {
+        console.error('Error closing MongoDB connection:', error.message);
+    }
+}
+
+export { connectToDatabase, closeDatabase };
