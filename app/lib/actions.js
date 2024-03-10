@@ -4,6 +4,7 @@ import { signIn } from '../../auth';
 import { AuthError } from 'next-auth';
 import { connectToDatabase } from '../connectdb';
 import { ObjectId } from 'mongodb';
+import { signOut } from '../../auth';
 
 export async function authenticate(prevState, formData) {
     try {
@@ -21,11 +22,15 @@ export async function authenticate(prevState, formData) {
     }
 };
 
+export async function SignOut() {
+    await signOut();
+}
+
 export async function saveProfessorInfo(mode, profileInfo) {
     if (mode == 0) return;
     try {
         const db = await connectToDatabase();
-        const filter = { _id: new ObjectId(profileInfo._id)};
+        const filter = { _id: new ObjectId(profileInfo._id) };
         const updateDoc = {
             $set: {
                 email: profileInfo.email,
@@ -36,12 +41,12 @@ export async function saveProfessorInfo(mode, profileInfo) {
         };
         db.collection("Professor").updateOne(filter, updateDoc);
         console.log("we succesfully updated a professor");
-        return ;
+        return;
     }
     catch (err) {
         console.log(err);
         console.log('could not connect to db for professor');
-        return ;
+        return;
     }
 }
 

@@ -1,17 +1,16 @@
 import NextAuth from 'next-auth';
 import { authConfig } from './auth.config';
 import Credentials from 'next-auth/providers/credentials';
-import { promises as fs } from "fs";
 import { connectToDatabase } from './app/connectdb';
 
 async function getUser(email, password) {
     try {
         const db = await connectToDatabase();
-        let user = await db.collection("Student").find({"Email" : email}).toArray();
+        let user = await db.collection("Student").find({ "Email": email }).toArray();
         user = (user.length ? user[0] : 0);
 
         if (user && password == user.password) {
-            return { email, password: user[email] };
+            return { email, "name" : user.Username};
         }
         else {
             return null;
@@ -22,8 +21,7 @@ async function getUser(email, password) {
     }
 }
 
-export const { auth, signIn, signOut } = NextAuth({
-    ...authConfig,
+export const authOptions = {
     providers: [
         Credentials({
             async authorize(credentials) {
@@ -33,4 +31,9 @@ export const { auth, signIn, signOut } = NextAuth({
                 return user;
             }
         })],
+}
+
+export const { auth, signIn, signOut } = NextAuth({
+    ...authConfig,
+    ...authOptions, 
 });

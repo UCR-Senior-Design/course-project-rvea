@@ -88,6 +88,7 @@
     border: none;
     transition: all 0.5s;
     background: var(--yellow);
+    display: flex;
 }
 
 .button_yellow:hover {

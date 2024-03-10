@@ -1,18 +1,37 @@
-//import Popup from "../../components/popup.jsx";
+import { auth } from '../../../auth';
 import AppliedJobs from "../../components/AppliedJobs";
-import { promises as fs } from "fs";
+import { connectToDatabase } from '../../connectdb';
 
-async function getAppliedJobsMockData() {
-    const file = await fs.readFile(process.cwd() + "/json/appliedJobsMockData.json", "utf-8");
-    const data = JSON.parse(file);
+async function getUserAppliedJobs(email) {
+   try {
+        const db = await connectToDatabase();
+        let jobs = await db.collection("Previous Jobs").find({}).toArray();
+        let user = await db.collection("Student").find({ "Email": email }).toArray();
+        user = (user.length ? user[0] : 0);
+        const res = [];
 
-    return data.appliedJobs;
-}
+        for (let jobId of user.Experience) {
+            for (let job of jobs)  {
+                if (job._id.toString() == jobId.toString()) {
+                    job._id = job._id.toString();
+                    res.push(job);
+                }
+            }
+        }
+        
+        return res;
+    }
+    catch (err) {
+        console.log(err)
+        console.log("could not get users jobs");
+    }
+};
 
 export default async function Page() {
-    const appliedJobs = await getAppliedJobsMockData();
+    const session = await auth(); 
+    const appliedJobs = await getUserAppliedJobs(session.user.email);
 
     return (
-       <AppliedJobs appliedJobs={appliedJobs}></AppliedJobs>
+        <AppliedJobs appliedJobs={appliedJobs}></AppliedJobs>
     );
 }
