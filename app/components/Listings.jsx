@@ -13,6 +13,11 @@ export default function Listings(props) {
         setListings(props.jobListings);
         setJobIndex(0); //reset jobindex
     }, [props.jobListings]);
+
+    function applyClick(event) {
+        event.preventDefault();
+        alert('Job Applied!')
+    }
     
     return (
         <div className={styles.container}>
@@ -36,7 +41,7 @@ export default function Listings(props) {
 
 
             <div className={styles['details-container']}>
-                <div className={styles.details}>
+                <form className={styles.details}>
 
                     <h1>{listings[jobIndex]?.Title}</h1>
                     <div className={styles.subtitle}>
@@ -66,9 +71,12 @@ export default function Listings(props) {
 
                     <h2 className={`${styles.underline} ${styles.no_margin}`}>Role Description</h2>
                     <p className={styles.description}>{listings[jobIndex]?.Description}</p>
-                    <button className={`${styles.button} ${styles.color_bold}`}>Apply</button>
-                </div>
+                    <button className={`${styles.button} ${styles.color_bold}`} onClick={applyClick}>Apply</button>
+                </form>
             </div>
         </div>
     )
 }
+
+//Apply button click --> saves job list to a user in a databas
+//Applied jobs (pull from user's collection in db and populate page)
