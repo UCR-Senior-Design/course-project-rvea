@@ -102,14 +102,14 @@ export async function saveNewUser(formData, isStudent) {
         const db = await connectToDatabase();
         
         // Determine the collection based on the user type
-        const collectionName = isStudent ? 'Student' : 'Professor';
+        const collectionName = isStudent ? 'Professor' : 'Student';
         
         // Create a new user object with the provided form data
         const newUser = {
             fullName: formData.fullName,
             email: formData.email,
             password: formData.password,
-            userType: isStudent ? 'student' : 'professor'
+            isStudent: isStudent ? true : false
         };
 
         const result = await db.collection(collectionName).insertOne(newUser);

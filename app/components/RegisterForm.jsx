@@ -17,17 +17,23 @@ export default function RegisterForm({ router }) {
     const [title, setTitle] = useState('Register - Student');
 
     const handleRegister = async (event) => {
-        event.preventDefault();
+    event.preventDefault();
 
-        try {
+    try {
+        if (formData.password.length > 0) {
             console.log('Submitting form...');
-            await saveNewUser(formData, toggleState ? 'professor' : 'student');
+            await saveNewUser(formData, toggleState);
             await authenticate(formData);
-            router.push('/');
-        } catch (error) {
-            console.error('Error registering user:', error);
+
+            // Determine the destination URL based on user type
+            const destinationURL = toggleState ? '/professor/profile' : '/student/profile';
+            router.push(destinationURL);
         }
-    };
+    } catch (error) {
+        console.error('Error registering user:', error);
+    }
+};
+
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -87,8 +93,7 @@ export default function RegisterForm({ router }) {
                     <Link
                         href="/"
                         className={`${styles.button_yellow} ${styles.margin_btm_24}`}
-                        style={{ textDecoration: 'none', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
-                    >
+                        style={{ textDecoration: 'none', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         <p style={{ margin: '0', fontSize: '13px', color: '#FFF' }}>Back to Login</p>
                     </Link>
                 </div>

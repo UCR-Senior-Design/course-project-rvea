@@ -13,7 +13,7 @@ async function getUser(email, password) {
         user = (user.length ? user[0] : 0);
 
         if (user && password == user.password) {
-            return { email, "name" : user.Username};
+            return { email, "name": user.Username, "isStudent": user.isStudent};
         }
         else {
             return null;
