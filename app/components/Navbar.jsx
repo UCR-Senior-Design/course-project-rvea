@@ -7,6 +7,7 @@ import { useState } from 'react';
 
 export default function Navbar(props) {
     const routes = props.routes;
+    console.log(props.routes);
     const { data: session } = useSession();
     const [userName, setUserName] = useState(session?.user?.name);
 

@@ -6,9 +6,18 @@ import { connectToDatabase } from './app/connectdb';
 async function getUser(email, password) {
     try {
         const db = await connectToDatabase();
-        let user = await db.collection("Student").find({ "Email": email }).toArray();
-        if (user.length == 0) {
+
+        //Register as prof: ___@prof.edu
+        let user;
+        //let acct_type;
+        if (email.includes("prof")) {
             user = await db.collection("Professor").find({ "Email": email }).toArray();
+            //acct_type = "professor"
+        }
+        //Register as student: ___@student.edu
+        else if (email.includes("student")) {
+            user = await db.collection("Student").find({ "Email": email }).toArray();
+            //acct_type = "student"
         }
         user = (user.length ? user[0] : 0);
 

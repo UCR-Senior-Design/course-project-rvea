@@ -19,7 +19,7 @@ export default function ProfessorProfilePage(props) {
                             <h3>General & Contact Info</h3>
                             <button type="submit" form="professor-info-general" className={styles.btn} onClick={() => setMode(mode == 0 ? 1 : 0)} formAction={() => saveProfessorInfo(mode, profileInfo)}>+</button>
                         </div>
-                        <h5 className={mode ? styles.nothidden : styles.hidden}>Email: {profileInfo.email}</h5>
+                        <h5 className={mode ? styles.nothidden : styles.hidden}>Email: {profileInfo.Email}</h5>
                         <h5 className={mode ? styles.nothidden : styles.hidden}>Phone Number: {profileInfo.phone_number}</h5>
                         <h5 className={mode ? styles.nothidden : styles.hidden}>Pronouns: {profileInfo.pronouns}</h5>
                         <form id="professor-info-general">
