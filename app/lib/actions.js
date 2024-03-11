@@ -109,7 +109,7 @@ export async function saveNewUser(formData, isStudent) {
             fullName: formData.fullName,
             email: formData.email,
             password: formData.password,
-            isStudent: isStudent ? true : false
+            isStudent: isStudent ? false : true
         };
 
         const result = await db.collection(collectionName).insertOne(newUser);

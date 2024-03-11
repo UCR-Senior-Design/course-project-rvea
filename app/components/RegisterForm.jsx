@@ -7,7 +7,9 @@ import styles from '../styles/LoginForm.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
 
-export default function RegisterForm({ router }) {
+export default function RegisterForm() {
+    const router = useRouter();
+    
     const [formData, setFormData] = useState({
         fullName: '',
         email: '',
@@ -17,22 +19,21 @@ export default function RegisterForm({ router }) {
     const [title, setTitle] = useState('Register - Student');
 
     const handleRegister = async (event) => {
-    event.preventDefault();
+        event.preventDefault();
 
-    try {
         if (formData.password.length > 0) {
-            console.log('Submitting form...');
+
             await saveNewUser(formData, toggleState);
-            await authenticate(formData);
+
 
             // Determine the destination URL based on user type
             const destinationURL = toggleState ? '/professor/profile' : '/student/profile';
             router.push(destinationURL);
+
+            await authenticate(formData);
+
         }
-    } catch (error) {
-        console.error('Error registering user:', error);
-    }
-};
+    };
 
 
     const handleChange = (e) => {
