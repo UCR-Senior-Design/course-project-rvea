@@ -2,7 +2,7 @@
 
 import { saveNewUser, authenticate } from '../lib/actions';
 import { useState } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import styles from '../styles/LoginForm.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -25,12 +25,13 @@ export default function RegisterForm() {
 
             await saveNewUser(formData, toggleState);
 
+            await authenticate(formData);
 
             // Determine the destination URL based on user type
             const destinationURL = toggleState ? '/professor/profile' : '/student/profile';
             router.push(destinationURL);
 
-            await authenticate(formData);
+            
 
         }
     };
