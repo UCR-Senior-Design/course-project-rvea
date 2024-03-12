@@ -76,7 +76,6 @@ export async function saveAppliedJobs(job_id, user_email) {
     }
 }
 
-
 // Save Job Posting to Professor's Acct
 export async function createJobPosting(createJobInfo) {
     
@@ -119,17 +118,15 @@ export async function createJobPosting(createJobInfo) {
 export async function saveNewStudent(formData) {
     try {
         const db = await connectToDatabase();
+        
 
-        // Determine the collection based on the user type
-
-        // Create a new user object with the provided form data
         const newUser = {
             Username: formData.fullName,
             Email: formData.email,
             password: formData.password,
         };
 
-        const result = await db.collection(collectionName).insertOne(newUser);
+        const result = await db.collection('Student').insertOne(newUser);
 
         console.log('User saved successfully:', result.insertedId);
 
@@ -140,15 +137,54 @@ export async function saveNewStudent(formData) {
     }
 }
 
+export async function editProfile(input_username, degreeLevel, gpa, pronouns, skills, courses, transcript_pdfBase64, resume_pdfBased64) {
+    let db;
+    try{
+        db = await connectToDatabase();
+
+        const today = new Date();
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const day = String(today.getDate()).padStart(2, '0');
+        const year = today.getFullYear();
+        const formattedDate = `${month}-${day}-${year}`;
+
+        const result = await db.collection("Student").updateOne(
+            { 
+                $or: [
+                    { Username: input_username },
+                    { fullName: input_username }
+                ]
+            },
+            { $set: { 
+                PhoneNumber: "555",
+                DegreeLevel: degreeLevel,
+                GPA: gpa,
+                Pronouns: pronouns,
+                Skills: skills,
+                Courses: courses,
+                Transcript: transcript_pdfBase64,
+                Resume: resume_pdfBased64,
+                ApplicationDate: formattedDate
+            } }
+        );
+    } catch (err) {
+        console.log(err);
+        console.log('could not edit profile page');
+        return;
+    } finally {
+        //closeDatabase(db);
+        if (db && db.close) {
+            await db.close();
+        }
+    }
+
+}
+
 
 export async function saveNewProfessor(formData) {
     try {
         const db = await connectToDatabase();
         
-        // Determine the collection based on the user type
-        const collectionName = 'Professor';
-        
-        // Create a new user object with the provided form data
         const newUser = {
             Username: formData.fullName,
             Email: formData.email,
@@ -156,7 +192,7 @@ export async function saveNewProfessor(formData) {
             Experience: []
         };
 
-        const result = await db.collection(collectionName).insertOne(newUser);
+        const result = await db.collection('Professor').insertOne(newUser);
 
         console.log('User saved successfully:', result.insertedId);
 
