@@ -76,34 +76,9 @@ export async function saveAppliedJobs(job_id, user_email) {
     }
 }
 
-// Save Job Posting to Professor's Acct
-export async function createJobPosting(createJobInfo) {
-    
-    
-    let db;
-    try{
-        // Connect to the database and access its Previous Jobs collection
-        db = await connectToDatabase();
-        const collection = db.collection("Previous Jobs");
-    
-        // Create a document to insert
-        const doc = {
-            Title: createJobInfo.jobTitle,
-            Description: createJobInfo.description,
-            Professor: createJobInfo.professor,
-            Term: createJobInfo.schoolTerm,
-            Contract: "",
-            Deadline: createJobInfo.deadline,
-            Wage: createJobInfo.hourlyWage,
-            MinHrs: createJobInfo.minHrs,
-            TotalPos: createJobInfo.totalPos,
-            Prereqs: createJobInfo.prereqs
-        }
-}
 
 // Save Job Posting to Professor's Acct
 export async function createJobPosting(createJobInfo) {
-    
     
     let db;
     try{
