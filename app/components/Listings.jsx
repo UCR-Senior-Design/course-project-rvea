@@ -60,18 +60,18 @@ export default function Listings(props) {
                     <div className={styles.about}>
                         <div className={styles.about_card}>
                             <p className={`${styles.about_heading} ${styles.color_bold}`}>Deadline to Apply</p>
-                            <p className={`${styles.no_margin} ${styles.color_gray}`}>{listings[jobIndex]?.deadline}</p>
+                            <p className={`${styles.no_margin} ${styles.color_gray}`}>{listings[jobIndex]?.Deadline}</p>
                         </div>
                         <div className={styles.about_card}>
                             <p className={`${styles.about_heading} ${styles.color_bold}`}>Wage</p>
-                            <p className={`${styles.no_margin} ${styles.color_gray}`}>{listings[jobIndex]?.hourlyWage}/hour</p>
+                            <p className={`${styles.no_margin} ${styles.color_gray}`}>{listings[jobIndex]?.Wage}/hour</p>
                         </div>
                         <div className={styles.about_card}>
                             <p className={`${styles.about_heading} ${styles.color_bold}`}>Minimum Hours/Week</p>
-                            <p className={`${styles.no_margin} ${styles.color_gray}`}>{listings[jobIndex]?.minHrs} hours/week</p>
-                        </div>
+                            <p className={`${styles.no_margin} ${styles.color_gray}`}>{listings[jobIndex]?.MinHrs} hours/week</p>
+                        </div>        
                     </div>
-                    <p className={styles.prereq_text}><span className={styles.color_bold}>Prerequisite(s): </span><span className={styles.color_gray}>{listings[jobIndex]?.prerequisites}</span></p>
+                    <p className={styles.prereq_text}><span className={styles.color_bold}>Prerequisite(s): </span><span className={styles.color_gray}>{listings[jobIndex]?.Prereqs}</span></p>
 
                     <h2 className={`${styles.underline} ${styles.no_margin}`}>Role Description</h2>
                     <p className={styles.description}>{listings[jobIndex]?.Description}</p>
