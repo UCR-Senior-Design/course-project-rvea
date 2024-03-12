@@ -173,14 +173,16 @@ export async function getApplicants(email) {
                 }
             }
         }
-        
+
         let finalres = {}
 
         for (let job in res) {
             finalres[job] = [];
             for (let userid of res[job]) {
-               let stu = await db.collection("Student").findOne({_id:userid});
-               finalres[job].push({username: stu.Username, degreelvl : stu.DegreeLevel, gpa : stu.GPA, applicationDate: stu.ApplicationDate, pronouns: stu.Pronouns, skills: stu.Skills, courses: stu.Courses});
+                let stu = await db.collection("Student").findOne({ _id: userid });
+                const accepted = await db.collection("Job").findOne({student: new Object(stu._id)});
+                console.log(accepted);
+                finalres[job].push({accepted: !!accepted, id: stu._id, username: stu.Username, degreelvl: stu.DegreeLevel, gpa: stu.GPA, applicationDate: stu.ApplicationDate, pronouns: stu.Pronouns, skills: stu.Skills, courses: stu.Courses });
             }
         }
 
@@ -190,5 +192,27 @@ export async function getApplicants(email) {
     }
     catch {
         console.log("Failed in get applicants");
+    }
+}
+
+export async function acceptStudent(course, student) {
+    try {
+        console.log("inside here");
+        console.log(course);
+        const db = await connectToDatabase();
+        const job = await db.collection("Previous Jobs").findOne({ Title: course });
+
+        // Create a new user object with the provided form data
+        const acceptedStudent = {
+            student: new ObjectId(student),
+            course: job._id
+        };
+        console.log(acceptedStudent);
+        const result = await db.collection("Job").insertOne(acceptedStudent);
+
+        console.log('successfully saved student', result.insertedId);
+    } catch (error) {
+        console.error('Error accepting student', error);
+        throw error;
     }
 }

@@ -3,11 +3,12 @@ import styles from '../styles/applicants.module.css';
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { acceptStudent } from '../lib/actions';
 
 export default function ProfessorApplicants(props) {
     let applicants = JSON.parse(props.applicants);
     console.log(applicants);
-    const [status, setStatus] = useState()
+    const [status, setStatus] = useState();
     const handleAccept = () => {
         setStatus('accept')
     }
@@ -20,12 +21,12 @@ export default function ProfessorApplicants(props) {
             {
                 Object.keys(applicants).map((key) => {
                     return (
-                        <div className={styles.course}>
+                        <div key={key} className={styles.course}>
                             <h1 className={`${styles.top_padding}`}>{key}</h1>
                             {applicants[key].map((student) => {
                                 return (
                                     <>
-                                        <div className={styles.categories}>
+                                        <div key={student} className={styles.categories}>
                                             <h4>Name</h4>
                                             <h4>Degree</h4>
                                             <h4>GPA</h4>
@@ -34,7 +35,7 @@ export default function ProfessorApplicants(props) {
                                             <h4>Status</h4>
                                         </div>
 
-                                        <ul className={styles.accordion}>
+                                        <ul key={student} className={styles.accordion}>
                                             <li>
                                                 <input type='checkbox' name='accordion' id='first' />
                                                 <label htmlFor='first' className={styles.labels}>
@@ -47,10 +48,11 @@ export default function ProfessorApplicants(props) {
                                                             <Image className={styles.image} src='/doc_icon.png' width='43' height='43'></Image>
                                                         </Link>
                                                     </p>
-                                                    {status === 'accept' ? <p className={styles.underline}>Accepted</p> :
+                                                    {status === 'accept' || student.accepted ? <p className={styles.underline}>Accepted</p> :
                                                         status === 'decline' ? <p className={styles.underline}>Declined</p> :
                                                             <div className={styles.buttons}>
-                                                                <button className={`${styles.buttons} ${styles.green}`} onClick={handleAccept}>Accept</button>
+                                                                <form id="accept-decline"></form>
+                                                                <button form="accept-decline" type="submit" className={`${styles.buttons} ${styles.green}`} formAction={() => {acceptStudent(key, student.id); setStatus('accept')}}>Accept</button>
                                                                 <button className={`${styles.buttons} ${styles.red}`} onClick={handleDecline}>Decline</button>
                                                             </div>
                                                     }
