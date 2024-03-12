@@ -99,31 +99,6 @@ export async function createJobPosting(createJobInfo) {
             TotalPos: createJobInfo.totalPos,
             Prereqs: createJobInfo.prereqs
         }
-}
-
-// Save Job Posting to Professor's Acct
-export async function createJobPosting(createJobInfo) {
-    
-    
-    let db;
-    try{
-        // Connect to the database and access its Previous Jobs collection
-        db = await connectToDatabase();
-        const collection = db.collection("Previous Jobs");
-    
-        // Create a document to insert
-        const doc = {
-            Title: createJobInfo.jobTitle,
-            Description: createJobInfo.description,
-            Professor: createJobInfo.professor,
-            Term: createJobInfo.schoolTerm,
-            Contract: "",
-            Deadline: createJobInfo.deadline,
-            Wage: createJobInfo.hourlyWage,
-            MinHrs: createJobInfo.minHrs,
-            TotalPos: createJobInfo.totalPos,
-            Prereqs: createJobInfo.prereqs
-        }
 
         // Insert the defined document into the Previous Jobs collection
         const result = await collection.insertOne(doc);
@@ -144,17 +119,15 @@ export async function createJobPosting(createJobInfo) {
 export async function saveNewStudent(formData) {
     try {
         const db = await connectToDatabase();
+        
 
-        // Determine the collection based on the user type
-
-        // Create a new user object with the provided form data
         const newUser = {
             Username: formData.fullName,
             Email: formData.email,
             password: formData.password,
         };
 
-        const result = await db.collection(collectionName).insertOne(newUser);
+        const result = await db.collection('Student').insertOne(newUser);
 
         console.log('User saved successfully:', result.insertedId);
 
@@ -213,10 +186,6 @@ export async function saveNewProfessor(formData) {
     try {
         const db = await connectToDatabase();
         
-        // Determine the collection based on the user type
-        const collectionName = 'Professor';
-        
-        // Create a new user object with the provided form data
         const newUser = {
             Username: formData.fullName,
             Email: formData.email,
@@ -224,7 +193,7 @@ export async function saveNewProfessor(formData) {
             Experience: []
         };
 
-        const result = await db.collection(collectionName).insertOne(newUser);
+        const result = await db.collection('Professor').insertOne(newUser);
 
         console.log('User saved successfully:', result.insertedId);
 
