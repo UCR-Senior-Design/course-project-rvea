@@ -48,6 +48,9 @@ export async function saveProfessorInfo(mode, profileInfo) {
         console.log('could not connect to db for professor');
         return;
     }
+    finally {
+        closeDatabase();
+    }
 }
 
 export async function saveAppliedJobs(job_id, user_email) {
@@ -67,6 +70,9 @@ export async function saveAppliedJobs(job_id, user_email) {
         console.log(err);
         console.log('could not connect to db for student application job');
         return;
+    }
+    finally {
+        closeDatabase();
     }
 }
 
@@ -183,5 +189,8 @@ export async function saveNewProfessor(formData) {
     } catch (error) {
         console.error('Error saving new user:', error);
         throw error;
+    }
+    finally {
+        closeDatabase();
     }
 }

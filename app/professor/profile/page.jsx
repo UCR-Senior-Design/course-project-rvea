@@ -1,5 +1,5 @@
 import ProfessorProfilePage from '../../components/professorProfilePage';
-import { connectToDatabase } from '../../connectdb';
+import { closeDatabase, connectToDatabase } from '../../connectdb';
 
 async function getProfessorInfo() {
     try {
@@ -11,6 +11,9 @@ async function getProfessorInfo() {
     }
     catch {
         console.log('could not connect to db for professor');
+    }
+    finally {
+        closeDatabase();
     }
 }
 

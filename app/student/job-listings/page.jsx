@@ -2,7 +2,7 @@ import Searchbar from '../../components/Searchbar.jsx'
 import Listings from '../../components/Listings.jsx'
 import { promises as fs } from "fs";
 
-import { connectToDatabase } from '../../connectdb.jsx';
+import { connectToDatabase, closeDatabase } from '../../connectdb.jsx';
 import { connect } from 'http2';
 
 // async function getJobListingsMockData() {
@@ -19,6 +19,9 @@ async function getDB() {
     }
     catch {
         console.log('could not connect to database');
+    }
+    finally {
+        closeDatabase();
     }
 }
 
@@ -40,21 +43,8 @@ export default async function JobListings() {
     const searchjobs = []
     for (let job in jobListings) {
         jobListings[job]._id = jobListings[job]._id.toString();
-        //push all details of a job position to array to enable searching
-        // const array2 = []
-        // array2.push(jobListings[job]._id)
-        // array2.push(jobListings[job].Title)
-        // array2.push(jobListings[job].Description)
-        // array2.push(jobListings[job].Position)
-        // array2.push(jobListings[job].Professor)
-        // array2.push(jobListings[job].Term)
-        // array2.push(jobListings[job].Contract)
-        // searchjobs.push(array2)
     }
 
-    function handleSearch() {
-        alert('searched...')
-    }
 
     return(
         <>

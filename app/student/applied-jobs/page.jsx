@@ -1,6 +1,6 @@
 import { auth } from '../../../auth';
 import AppliedJobs from "../../components/AppliedJobs";
-import { connectToDatabase } from '../../connectdb';
+import { connectToDatabase, closeDatabase } from '../../connectdb';
 
 async function getUserAppliedJobs(email) {
    try {
@@ -24,6 +24,9 @@ async function getUserAppliedJobs(email) {
     catch (err) {
         console.log(err)
         console.log("could not get users jobs");
+    }
+    finally {
+        closeDatabase();
     }
 };
 
