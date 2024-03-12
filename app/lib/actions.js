@@ -187,7 +187,7 @@ export async function getApplicants(email) {
                 let stu = await db.collection("Student").findOne({ _id: userid });
                 const accepted = await db.collection("Job").findOne({student: new Object(stu._id)});
                 console.log(accepted);
-                finalres[job].push({accepted: !!accepted, id: stu._id, username: stu.Username, degreelvl: stu.DegreeLevel, gpa: stu.GPA, applicationDate: stu.ApplicationDate, pronouns: stu.Pronouns, skills: stu.Skills, courses: stu.Courses });
+                finalres[job].push({accepted: !!accepted, id: stu._id, username: stu.Username, degreelvl: stu.DegreeLevel, gpa: stu.GPA, applicationDate: stu.ApplicationDate, pronouns: stu.Pronouns, skills: stu.Skills, courses: stu.Courses, transcript: stu.Transcript, resume: stu.Resume });
             }
         }
 

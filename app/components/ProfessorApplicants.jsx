@@ -16,6 +16,9 @@ export default function ProfessorApplicants(props) {
         setStatus('decline')
     }
 
+    const [pdf, setPdf] = useState('');
+
+
     return (
         <div className={styles.container}>
             {
@@ -44,9 +47,13 @@ export default function ProfessorApplicants(props) {
                                                     <p>{student.gpa}</p>
                                                     <p>{student.applicationDate}</p>
                                                     <p>
-                                                        <Link href='https://www.google.com' target='_blank'>
-                                                            <Image className={styles.image} src='/doc_icon.png' width='43' height='43'></Image>
-                                                        </Link>
+                                                        <button onClick={() => setPdf(student.transcript)}>
+                                                            <Link legacyBehavior href={pdf ? `${pdf}` : ''} passHref>
+                                                                <a target="_blank">
+                                                                    <Image className={styles.image} src='/doc_icon.png' width='43' height='43'></Image>
+                                                                </a>
+                                                            </Link>
+                                                        </button>
                                                     </p>
                                                     {status === 'accept' || student.accepted ? <p className={styles.underline}>Accepted</p> :
                                                         status === 'decline' ? <p className={styles.underline}>Declined</p> :
@@ -63,9 +70,13 @@ export default function ProfessorApplicants(props) {
                                                     <p className={styles.bold}>Courses Taken: {student.courses.map((course) => course + " ")}</p>
                                                     <p className={`${styles.bold} ${styles.skills}`}>Skills: {student.skills.map((skill) => skill + " ")}</p>
                                                     <p className={`${styles.bold} ${styles.resume_container}`}>Resume:
-                                                        <Link href='https://www.google.com' target='_blank'>
-                                                            <Image className={styles.resume} src='/doc_icon.png' width='43' height='43'></Image>
-                                                        </Link>
+                                                        <button onClick={() => setPdf(student.resume)}>
+                                                            <Link legacyBehavior href={pdf ? `${pdf}` : ''} passHref>
+                                                                <a target="_blank">
+                                                                    <Image className={styles.image} src='/doc_icon.png' width='43' height='43'></Image>
+                                                                </a>
+                                                            </Link>
+                                                        </button>
                                                     </p>
 
                                                 </div>
