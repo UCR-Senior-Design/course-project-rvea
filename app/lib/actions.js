@@ -57,13 +57,13 @@ export async function getProfessorInfo(email) {
         const jobs = await db.collection("Previous Jobs").find({}).toArray();
         professorInfo[0]["_id"] = professorInfo[0]["_id"].toString();
         for (let jobId in professorInfo[0]["Jobs"]) {
-            for (let job of jobs)  {
+            for (let job of jobs) {
                 if (job._id.toString() == professorInfo[0]["Jobs"][jobId].toString()) {
                     professorInfo[0]["Jobs"][jobId] = job.Title;
                 }
             }
         }
-        console.log(professorInfo[0]);
+
         return professorInfo[0];
     }
     catch {
@@ -156,5 +156,39 @@ export async function saveNewUser(formData, isStudent) {
     } catch (error) {
         console.error('Error saving new user:', error);
         throw error;
+    }
+}
+
+export async function getApplicants(email) {
+    try {
+        const db = await connectToDatabase();
+        const professorInfo = await db.collection("Professor").find({ "Email": email }).toArray();
+        const jobs = await db.collection("Previous Jobs").find({}).toArray();
+        let res = {};
+
+        for (let jobId in professorInfo[0]["Jobs"]) {
+            for (let job of jobs) {
+                if (job._id.toString() == professorInfo[0]["Jobs"][jobId].toString()) {
+                    res[job.Title] = job.Applicants;
+                }
+            }
+        }
+        
+        let finalres = {}
+
+        for (let job in res) {
+            finalres[job] = [];
+            for (let userid of res[job]) {
+               let stu = await db.collection("Student").findOne({_id:userid});
+               finalres[job].push({username: stu.Username, degreelvl : stu.DegreeLevel, gpa : stu.GPA, applicationDate: stu.ApplicationDate, pronouns: stu.Pronouns, skills: stu.Skills, courses: stu.Courses});
+            }
+        }
+
+        finalres = JSON.stringify(finalres);
+
+        return finalres;
+    }
+    catch {
+        console.log("Failed in get applicants");
     }
 }
