@@ -97,19 +97,44 @@ export async function createJobPosting(createJobInfo) {
 }
 
 
-export async function saveNewUser(formData, isStudent) {
+export async function saveNewStudent(formData) {
     try {
         const db = await connectToDatabase();
         
         // Determine the collection based on the user type
-        const collectionName = isStudent ? 'Student' : 'Professor';
+        const collectionName = 'Student';
         
         // Create a new user object with the provided form data
         const newUser = {
-            fullName: formData.fullName,
-            email: formData.email,
-            password: formData.password,
-            userType: isStudent ? 'student' : 'professor'
+            Username: formData.fullName,
+            Email: formData.email,
+            password: formData.password
+        };
+
+        const result = await db.collection(collectionName).insertOne(newUser);
+        
+        console.log('User saved successfully:', result.insertedId);
+        
+        return result.insertedId;
+    } catch (error) {
+        console.error('Error saving new user:', error);
+        throw error;
+    }
+}
+
+
+export async function saveNewProfessor(formData) {
+    try {
+        const db = await connectToDatabase();
+        
+        // Determine the collection based on the user type
+        const collectionName = 'Professor';
+        
+        // Create a new user object with the provided form data
+        const newUser = {
+            Username: formData.fullName,
+            Email: formData.email,
+            password: formData.password
         };
 
         const result = await db.collection(collectionName).insertOne(newUser);
