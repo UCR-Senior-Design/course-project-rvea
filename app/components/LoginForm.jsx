@@ -22,6 +22,8 @@ export default function LoginForm() {
                     <Link href="/register" className={`${styles.button_yellow} ${styles.margin_btm_24}`} style={{ textDecoration: 'none', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         <p style={{ margin: '0', fontSize: '13px', color: '#FFF' }}>Register</p>
                     </Link>
+
+
                 </div>
             </form>
         </>

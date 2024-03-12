@@ -96,6 +96,10 @@ export async function createJobPosting(createJobInfo) {
     }
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> d9c3f8f1aaca9170d34fd9935f700473e49aeeb4
 export async function saveNewUser(formData, isStudent) {
     try {
         const db = await connectToDatabase();

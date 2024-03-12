@@ -6,10 +6,15 @@ import { connectToDatabase } from './app/connectdb';
 async function getUser(email, password) {
     try {
         const db = await connectToDatabase();
-        let user = await db.collection("Student").findOne({ "email": email });
-        
-        if (!user) {
-            user = await db.collection("Professor").findOne({ "email": email });
+        let user = await db.collection("Student").find({ "Email": email }).toArray();
+        if (user.length == 0) {
+            user = await db.collection("Professor").find({ "Email": email }).toArray();
+        }
+        user = (user.length ? user[0] : 0);
+
+        if (user && password == user.password) {
+            console.log("User found:", user); // Log the user object
+            return { email, "name": user.Username, "isStudent": user.isStudent};
         }
 
         if (user && password === user.password) {
@@ -25,12 +30,14 @@ async function getUser(email, password) {
     }
 }
 
+
 export const authOptions = {
     providers: [
         Credentials({
             async authorize(credentials, auth) {
                 const email = credentials.email;
                 const password = credentials.password;
+<<<<<<< HEAD
                 // Define the user variable
                 let user = null;
                 try {
@@ -48,6 +55,10 @@ export const authOptions = {
                     console.error("Error fetching user:", error);
                     // Handle error appropriately
                 }
+=======
+                const isStudent = credentials.isStudent
+                const user = await getUser(email, password);
+>>>>>>> d9c3f8f1aaca9170d34fd9935f700473e49aeeb4
                 return user;
             }
         })],
@@ -57,4 +68,8 @@ export const authOptions = {
 export const { auth, signIn, signOut } = NextAuth({
     ...authConfig,
     ...authOptions,
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> d9c3f8f1aaca9170d34fd9935f700473e49aeeb4
