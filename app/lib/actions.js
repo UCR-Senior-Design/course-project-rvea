@@ -50,6 +50,27 @@ export async function saveProfessorInfo(mode, profileInfo) {
     }
 }
 
+export async function getProfessorInfo(email) {
+    try {
+        const db = await connectToDatabase();
+        const professorInfo = await db.collection("Professor").find({ "Email": email }).toArray();
+        const jobs = await db.collection("Previous Jobs").find({}).toArray();
+        professorInfo[0]["_id"] = professorInfo[0]["_id"].toString();
+        for (let jobId in professorInfo[0]["Jobs"]) {
+            for (let job of jobs)  {
+                if (job._id.toString() == professorInfo[0]["Jobs"][jobId].toString()) {
+                    professorInfo[0]["Jobs"][jobId] = job.Title;
+                }
+            }
+        }
+        console.log(professorInfo[0]);
+        return professorInfo[0];
+    }
+    catch {
+        console.log('could not connect to db for professor');
+    }
+}
+
 export async function saveAppliedJobs(job_id, user_email) {
     try {
         const db = await connectToDatabase();
@@ -73,14 +94,14 @@ export async function saveAppliedJobs(job_id, user_email) {
 
 // Save Job Posting to Professor's Acct
 export async function createJobPosting(createJobInfo) {
-    
-    
+
+
     let db;
-    try{
+    try {
         // Connect to the database and access its Previous Jobs collection
         db = await connectToDatabase();
         const collection = db.collection("Previous Jobs");
-    
+
         // Create a document to insert
         const doc = {
             Title: createJobInfo.jobTitle,
@@ -92,7 +113,8 @@ export async function createJobPosting(createJobInfo) {
             Wage: createJobInfo.hourlyWage,
             MinHrs: createJobInfo.minHrs,
             TotalPos: createJobInfo.totalPos,
-            Prereqs: createJobInfo.prereqs
+            Prereqs: createJobInfo.prereqs,
+            Applicants: []
         }
 
         // Insert the defined document into the Previous Jobs collection
@@ -100,9 +122,9 @@ export async function createJobPosting(createJobInfo) {
         // Print the ID of the inserted document
         // console.log(`A document was inserted with the _id: ${result.insertedId}`);
     } catch (err) {
-                console.log(err);
-                console.log('could not create job posting');
-                return;
+        console.log(err);
+        console.log('could not create job posting');
+        return;
     } finally {
         // Close the MongoDB client connection
         closeDatabase(db);

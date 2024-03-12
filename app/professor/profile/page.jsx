@@ -1,23 +1,12 @@
 import ProfessorProfilePage from '../../components/professorProfilePage';
-import { connectToDatabase } from '../../connectdb';
-
-async function getProfessorInfo() {
-    try {
-        const db = await connectToDatabase();
-        const professorInfo = await db.collection("Professor").find({}).toArray();
-        professorInfo[0]["_id"] = professorInfo[0]["_id"].toString();
-
-        return professorInfo[0];
-    }
-    catch {
-        console.log('could not connect to db for professor');
-    }
-}
+import { getProfessorInfo } from '../../lib/actions';
+import { auth } from '../../../auth';
 
 export default async function Profile() {
-    const professorInfo = await getProfessorInfo();
+    const session = await auth();
+    const professorInfo = await getProfessorInfo(session.user.email);
 
     return (
-        <ProfessorProfilePage profileInfo={professorInfo}/>
+        <ProfessorProfilePage profileInfo={professorInfo} />
     )
 }
