@@ -2,12 +2,12 @@
     background-color: var(--bg_darker);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    //justify-content: center;
     min-height: 720px;
     margin: 56px auto;
     width: 80%;
     border-radius: 8px;
-    padding: 20px;
+    padding: 20px 20px;
     /* box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.15),
                 -6px -6px 10 -1px rgba(255, 255, 255, 0.7) */
 }
@@ -39,10 +39,11 @@
 
 .accordion {
     background-color: white;
-    margin-top: 0px;
+    margin-top: 8px;
     border-radius: 8px;
     padding: 0;
     margin-bottom: 5px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 .accordion li {
     list-style: none;
@@ -146,11 +147,26 @@
 
 
 .green {
-    background-color: #85E538;
+    //background-color: #85E538;
+    background-color: var(--blue);
+    color: white;
+    transition: all 0.5s; 
 }
 .red {
-    background-color: #FA6666;
+    //background-color: #FA6666;
+    background-color: var(--yellow);
+    color: white;
+    transition: all 0.5s; 
 }
+
+.green:hover {
+    background: var(--blue_hover);
+}
+
+.red:hover {
+    background: var(--yellow_hover);
+}
+
 .underline {
     text-decoration: underline;
 }

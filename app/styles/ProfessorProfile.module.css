@@ -72,6 +72,7 @@
     padding: 8px 24px;
     transition: all 0.5s; 
     cursor: pointer;
+    width: 270px;
 }
 
 h3 + .bar_entry {

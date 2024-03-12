@@ -45,12 +45,9 @@ export default function ProfessorProfilePage(props) {
             <div className={styles.col}>
                 <div className={`${styles.col_entry} ${styles.bar}`}>
                     <h3>Current Positions</h3>
-                    <div className={styles.bar_entry}>
-                        <h4>CS120B - Intro to Embedded Systems</h4>
-                    </div>
-                    <div className={styles.bar_entry}>
-                        <h4>CS120B - Intro to Embedded Systems</h4>
-                    </div>
+                    {profileInfo.Jobs.map((course, indx) => (<div key={indx} onClick={() => location.href="/professor/applicants"}className={styles.bar_entry}>
+                        <h4>{course}</h4>
+                    </div>))}
                 </div>
             </div>
         </div>

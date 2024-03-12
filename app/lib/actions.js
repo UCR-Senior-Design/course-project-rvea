@@ -53,9 +53,31 @@ export async function saveProfessorInfo(mode, profileInfo) {
     }
 }
 
+export async function getProfessorInfo(email) {
+    try {
+        const db = await connectToDatabase();
+        const professorInfo = await db.collection("Professor").find({ "Email": email }).toArray();
+        const jobs = await db.collection("Previous Jobs").find({}).toArray();
+        professorInfo[0]["_id"] = professorInfo[0]["_id"].toString();
+        for (let jobId in professorInfo[0]["Jobs"]) {
+            for (let job of jobs) {
+                if (job._id.toString() == professorInfo[0]["Jobs"][jobId].toString()) {
+                    professorInfo[0]["Jobs"][jobId] = job.Title;
+                }
+            }
+        }
+
+        return professorInfo[0];
+    }
+    catch {
+        console.log('could not connect to db for professor');
+    }
+}
+
 export async function saveAppliedJobs(job_id, user_email) {
     try {
         const db = await connectToDatabase();
+        const student = await db.collection("Student").findOne({Email : user_email});
         const filter = { Email: user_email };
         const updateDoc = {
             $push: {
@@ -63,6 +85,7 @@ export async function saveAppliedJobs(job_id, user_email) {
             },
         };
         db.collection("Student").updateOne(filter, updateDoc);
+        db.collection("Previous Jobs").updateOne({_id : new ObjectId(job_id)}, {$push : {"Applicants" : student._id}});
         console.log("we succesfully applied for a position");
         return;
     }
@@ -78,13 +101,15 @@ export async function saveAppliedJobs(job_id, user_email) {
 
 // Save Job Posting to Professor's Acct
 export async function createJobPosting(createJobInfo) {
-    
+
+
     let db;
-    try{
+    try {
         // Connect to the database and access its Previous Jobs collection
         db = await connectToDatabase();
         const collection = db.collection("Previous Jobs");
-    
+        const professor = await db.collection("Professor").findOne({Username : createJobInfo.professor});
+
         // Create a document to insert
         const doc = {
             Title: createJobInfo.jobTitle,
@@ -96,17 +121,19 @@ export async function createJobPosting(createJobInfo) {
             Wage: createJobInfo.hourlyWage,
             MinHrs: createJobInfo.minHrs,
             TotalPos: createJobInfo.totalPos,
-            Prereqs: createJobInfo.prereqs
+            Prereqs: createJobInfo.prereqs,
+            Applicants: []
         }
 
         // Insert the defined document into the Previous Jobs collection
         const result = await collection.insertOne(doc);
+        db.collection("Professor").updateOne({_id : professor._id}, {$push : {"Jobs" : result.insertedId}});
         // Print the ID of the inserted document
         // console.log(`A document was inserted with the _id: ${result.insertedId}`);
     } catch (err) {
-                console.log(err);
-                console.log('could not create job posting');
-                return;
+        console.log(err);
+        console.log('could not create job posting');
+        return;
     } finally {
         // Close the MongoDB client connection
         closeDatabase(db);
@@ -133,6 +160,64 @@ export async function saveNewStudent(formData) {
         return result.insertedId;
     } catch (error) {
         console.error('Error saving new user:', error);
+        throw error;
+    }
+}
+
+export async function getApplicants(email) {
+    try {
+        const db = await connectToDatabase();
+        const professorInfo = await db.collection("Professor").find({ "Email": email }).toArray();
+        const jobs = await db.collection("Previous Jobs").find({}).toArray();
+        let res = {};
+
+        for (let jobId in professorInfo[0]["Jobs"]) {
+            for (let job of jobs) {
+                if (job._id.toString() == professorInfo[0]["Jobs"][jobId].toString()) {
+                    res[job.Title] = job.Applicants;
+                }
+            }
+        }
+
+        let finalres = {}
+
+        for (let job in res) {
+            finalres[job] = [];
+            for (let userid of res[job]) {
+                let stu = await db.collection("Student").findOne({ _id: userid });
+                const accepted = await db.collection("Job").findOne({student: new Object(stu._id)});
+                console.log(accepted);
+                finalres[job].push({accepted: !!accepted, id: stu._id, username: stu.Username, degreelvl: stu.DegreeLevel, gpa: stu.GPA, applicationDate: stu.ApplicationDate, pronouns: stu.Pronouns, skills: stu.Skills, courses: stu.Courses });
+            }
+        }
+
+        finalres = JSON.stringify(finalres);
+
+        return finalres;
+    }
+    catch {
+        console.log("Failed in get applicants");
+    }
+}
+
+export async function acceptStudent(course, student) {
+    try {
+        console.log("inside here");
+        console.log(course);
+        const db = await connectToDatabase();
+        const job = await db.collection("Previous Jobs").findOne({ Title: course });
+
+        // Create a new user object with the provided form data
+        const acceptedStudent = {
+            student: new ObjectId(student),
+            course: job._id
+        };
+        console.log(acceptedStudent);
+        const result = await db.collection("Job").insertOne(acceptedStudent);
+
+        console.log('successfully saved student', result.insertedId);
+    } catch (error) {
+        console.error('Error accepting student', error);
         throw error;
     }
 }
