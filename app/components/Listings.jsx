@@ -1,12 +1,16 @@
 'use client'
 import styles from '../styles/Listings.module.css'
-import {useState, useEffect, useRef} from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { saveAppliedJobs } from '../lib/actions'
+import { useSession } from 'next-auth/react';
 
 export default function Listings(props) {
     const [jobIndex, setJobIndex] = useState(0);
     const [listings, setListings] = useState(props.jobListings);
+    const { data: session } = useSession();
+    const [studentEmail, setStudentEmail] = useState(session?.user.email);
+    
 
     //After the newly filtered listings is passed through as props,
     //update the listings in here to the new one via useEffect
@@ -15,30 +19,28 @@ export default function Listings(props) {
         setJobIndex(0); //reset jobindex
     }, [props.jobListings]);
 
-    function applyClick(event) {
-        event.preventDefault();
-        alert('Job Applied!')
-        saveAppliedJobs()
+    function applyClick(jobIndex) {
+        saveAppliedJobs(listings[jobIndex]._id, studentEmail);
     }
-    
+
     return (
         <div className={styles.container}>
 
             <div className={styles['listings-container']}>
-                    {listings.map((data, index) => {
-                        return (
-                            <div className={styles.cards} key={index} onClick={() => setJobIndex(index)}>
-                                <Image className={styles['card-logo']} src='/pc.png' width='60' height='60'></Image>
-                                <div>
-                                    <h3 className={`${styles.text} ${styles.title}`}>{data.Title}</h3>
-                                    <p className={`${styles.text} ${styles.name}`}>{data.Professor}</p><br></br>
-                                    <p className={`${styles.text} ${styles.quarter}`}>Term: {data.Term}</p>
-                                    <p className={styles.text}>Wage: <span className={styles.wage}>{data.hourlyWage}</span></p>
-                                    <p className={styles.text}>Remaining Seats: <span className={styles.seats}>{data.totalSeats}</span></p>
-                                </div>
+                {listings.map((data, index) => {
+                    return (
+                        <div className={styles.cards} key={index} onClick={() => setJobIndex(index)}>
+                            <Image className={styles['card-logo']} src='/pc.png' width='60' height='60'></Image>
+                            <div>
+                                <h3 className={`${styles.text} ${styles.title}`}>{data.Title}</h3>
+                                <p className={`${styles.text} ${styles.name}`}>{data.Professor}</p><br></br>
+                                <p className={`${styles.text} ${styles.quarter}`}>Term: {data.Term}</p>
+                                <p className={styles.text}>Wage: <span className={styles.wage}>{data.hourlyWage}</span></p>
+                                <p className={styles.text}>Remaining Seats: <span className={styles.seats}>{data.totalSeats}</span></p>
                             </div>
-                        )
-                    })}
+                        </div>
+                    )
+                })}
             </div>
 
 
@@ -58,22 +60,22 @@ export default function Listings(props) {
                     <div className={styles.about}>
                         <div className={styles.about_card}>
                             <p className={`${styles.about_heading} ${styles.color_bold}`}>Deadline to Apply</p>
-                            <p className={`${styles.no_margin} ${styles.color_gray}`}>{listings[jobIndex]?.deadline}</p>
+                            <p className={`${styles.no_margin} ${styles.color_gray}`}>{listings[jobIndex]?.Deadline}</p>
                         </div>
                         <div className={styles.about_card}>
                             <p className={`${styles.about_heading} ${styles.color_bold}`}>Wage</p>
-                            <p className={`${styles.no_margin} ${styles.color_gray}`}>{listings[jobIndex]?.hourlyWage}/hour</p>
+                            <p className={`${styles.no_margin} ${styles.color_gray}`}>{listings[jobIndex]?.Wage}/hour</p>
                         </div>
                         <div className={styles.about_card}>
                             <p className={`${styles.about_heading} ${styles.color_bold}`}>Minimum Hours/Week</p>
-                            <p className={`${styles.no_margin} ${styles.color_gray}`}>{listings[jobIndex]?.minHrs} hours/week</p>
+                            <p className={`${styles.no_margin} ${styles.color_gray}`}>{listings[jobIndex]?.MinHrs} hours/week</p>
                         </div>        
                     </div>
-                    <p className={styles.prereq_text}><span className={styles.color_bold}>Prerequisite(s): </span><span className={styles.color_gray}>{listings[jobIndex]?.prerequisites}</span></p>
+                    <p className={styles.prereq_text}><span className={styles.color_bold}>Prerequisite(s): </span><span className={styles.color_gray}>{listings[jobIndex]?.Prereqs}</span></p>
 
                     <h2 className={`${styles.underline} ${styles.no_margin}`}>Role Description</h2>
                     <p className={styles.description}>{listings[jobIndex]?.Description}</p>
-                    <button className={`${styles.button} ${styles.color_bold}`} onClick={applyClick}>Apply</button>
+                    <button className={`${styles.button} ${styles.color_bold}`} onClick={() => applyClick(jobIndex)}>Apply</button>
                 </form>
             </div>
         </div>

@@ -9,11 +9,14 @@ import Link from 'next/link';
 
 export default function RegisterForm() {
     const router = useRouter();
+    
     const [formData, setFormData] = useState({
         fullName: '',
         email: '',
         password: '',
     });
+    const [toggleState, setToggleState] = useState(false);
+    const [title, setTitle] = useState('Register - Student');
 
     const handleRegister = async (event) => {
         event.preventDefault();
@@ -37,12 +40,18 @@ export default function RegisterForm() {
         }
     };
 
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
             ...formData,
             [name]: value,
         });
+    };
+
+    const handleToggle = () => {
+        setToggleState(!toggleState);
+        setTitle(toggleState ? 'Register - Student' : 'Register - Professor');
     };
 
     return (

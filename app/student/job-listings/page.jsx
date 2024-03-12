@@ -39,7 +39,7 @@ export default async function JobListings() {
     const jobListings = await getJobListings();
     const searchjobs = []
     for (let job in jobListings) {
-        jobListings[job]._id = 0
+        jobListings[job]._id = jobListings[job]._id.toString();
         //push all details of a job position to array to enable searching
         // const array2 = []
         // array2.push(jobListings[job]._id)

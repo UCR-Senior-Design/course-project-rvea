@@ -1,8 +1,13 @@
 'use client';
 import styles from '../../styles/create-job.module.css'
 import { createJobPosting } from '../../lib/actions';
+import { useSession } from 'next-auth/react'
+import { useState } from 'react'
 
 export default function CreateJob() {
+    const { data: session } = useSession();
+    const [userName, setUserName] = useState(session?.user?.name);
+
     const createJobInfo = {
         //Grab inputs from boxes and save them to the database
         jobTitle: "",
@@ -10,16 +15,23 @@ export default function CreateJob() {
         deadline: "",
         hourlyWage: "",
         minHrs: "",
-        totalPos: 0,
+        totalPos: "",
         prereqs: "",
-        description: ""
+        description: "",
+        professor: userName
     }
     
     function publishJob(event) {
         //event.preventDefault();
-        //alert('Job Created!');
-        //console.log(createJobInfo)
-        createJobPosting(createJobInfo);
+
+        //Make sure all values aren't empty before publishing
+        if (Object.values(createJobInfo).includes("")) {
+            alert("Please fill in empty boxes before submitting.");
+        }
+        else {
+            alert("Job has been created!");
+            createJobPosting(createJobInfo);
+        }
     }
 
 
@@ -67,7 +79,7 @@ export default function CreateJob() {
                     <span className={styles.labels}>Role Description</span>
                 </label>
                 
-                <button className={styles.button} onSubmit={publishJob}>Publish</button>
+                <button className={styles.button} onClick={publishJob}>Publish</button>
 
             </form>
         </div>

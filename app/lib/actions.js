@@ -2,7 +2,7 @@
 
 import { signIn } from '../../auth';
 import { AuthError } from 'next-auth';
-import { connectToDatabase } from '../connectdb';
+import { connectToDatabase, closeDatabase } from '../connectdb';
 import { ObjectId } from 'mongodb';
 import { signOut } from '../../auth';
 
@@ -50,57 +50,71 @@ export async function saveProfessorInfo(mode, profileInfo) {
     }
 }
 
-export async function saveAppliedJobs() {
+export async function saveAppliedJobs(job_id, user_email) {
     try {
         const db = await connectToDatabase();
-        console.log("student successfully applied to a job");
+        const filter = { Email: user_email };
+        const updateDoc = {
+            $push: {
+                "Experience": new ObjectId(job_id)
+            },
+        };
+        db.collection("Student").updateOne(filter, updateDoc);
+        console.log("we succesfully applied for a position");
         return;
-
-        //professor creates posting/job object, we save student id's in attribute of that job posting [into job collection]
-        //also save into Student Applied Jobs collection [to show on student view]
-                    //student id
-            //job_ids[]
     }
     catch (err) {
         console.log(err);
-        console.log('could not connect to db for student applications');
+        console.log('could not connect to db for student application job');
         return;
     }
 }
 
-export async function createJobPosting(createJobInfo) {
-    console.log('here')
-    try{
-        //Store job posting by creting a new document
-        //const db = connectToDatabase();
-        console.log(createJobInfo)
-        //const filter = { _id: new ObjectId(createJobInfo._id)};
-        // const createDoc = {
-        //     $set: {
-        //         jobtitle: profileInfo.email,
-        //         phone_number: profileInfo.phone_number,
-        //         pronouns: profileInfo.pronouns,
-        //         description: profileInfo.description
-        //     },
-        // };
 
-        //save document to database
-            //db.collection("Professor").updateOne(filter, updateDoc);
-        console.log('successfully created a job')
-        return;
+// Save Job Posting to Professor's Acct
+export async function createJobPosting(createJobInfo) {
+    
+    
+    let db;
+    try{
+        // Connect to the database and access its Previous Jobs collection
+        db = await connectToDatabase();
+        const collection = db.collection("Previous Jobs");
+    
+        // Create a document to insert
+        const doc = {
+            Title: createJobInfo.jobTitle,
+            Description: createJobInfo.description,
+            Professor: createJobInfo.professor,
+            Term: createJobInfo.schoolTerm,
+            Contract: "",
+            Deadline: createJobInfo.deadline,
+            Wage: createJobInfo.hourlyWage,
+            MinHrs: createJobInfo.minHrs,
+            TotalPos: createJobInfo.totalPos,
+            Prereqs: createJobInfo.prereqs
+        }
+
+        // Insert the defined document into the Previous Jobs collection
+        const result = await collection.insertOne(doc);
+        // Print the ID of the inserted document
+        // console.log(`A document was inserted with the _id: ${result.insertedId}`);
+    } catch (err) {
+                console.log(err);
+                console.log('could not create job posting');
+                return;
+    } finally {
+        // Close the MongoDB client connection
+        closeDatabase(db);
     }
-    catch (err) {
-        console.log(err);
-        console.log('could not create job posting');
-        return;
-    }
+
 }
 
 
 export async function saveNewStudent(formData) {
     try {
         const db = await connectToDatabase();
-        
+
         // Determine the collection based on the user type
         const collectionName = 'Student';
         
@@ -108,7 +122,8 @@ export async function saveNewStudent(formData) {
         const newUser = {
             Username: formData.fullName,
             Email: formData.email,
-            password: formData.password
+            password: formData.password,
+            Experience: []
         };
 
         const result = await db.collection(collectionName).insertOne(newUser);
@@ -134,13 +149,14 @@ export async function saveNewProfessor(formData) {
         const newUser = {
             Username: formData.fullName,
             Email: formData.email,
-            password: formData.password
+            password: formData.password,
+            Experience: []
         };
 
         const result = await db.collection(collectionName).insertOne(newUser);
-        
+
         console.log('User saved successfully:', result.insertedId);
-        
+
         return result.insertedId;
     } catch (error) {
         console.error('Error saving new user:', error);
