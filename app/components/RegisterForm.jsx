@@ -30,9 +30,7 @@ export default function RegisterForm() {
             // Determine the destination URL based on user type
             const destinationURL = toggleState ? '/professor/profile' : '/student/profile';
             router.push(destinationURL);
-
             
-
         }
     };
 

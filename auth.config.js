@@ -15,10 +15,12 @@ export const authConfig = {
 
             // Continue with your existing logic for authenticated users
             if (isLoggedIn) {
+
                 if (auth?.user.isStudent === true) {
-                    return true;
-                } else if (auth?.user.isStudent === false) {
-                    return true;
+                    return Response.redirect(new URL("/student/profile", nextUrl));
+                }
+                if (auth?.user.isStudent === false) {
+                    return Response.redirect(new URL("/professor/profile", nextUrl));
                 }
                 return true;
             }
