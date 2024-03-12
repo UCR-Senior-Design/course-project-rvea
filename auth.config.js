@@ -7,30 +7,25 @@ export const authConfig = {
             const isLoggedIn = !!auth?.user;
             const isOnStudentRoute = nextUrl.pathname.startsWith("/student");
             const isOnProfessorRoute = nextUrl.pathname.startsWith("/professor");
-            
-            //Must check if users are logged in first b4 being able to access urls
-            if (isOnStudentRoute) {
-                if (isLoggedIn && auth?.user.email.includes("student")) return true;
-                return false;
-            }
-            else if (isOnProfessorRoute) {
-                if (isLoggedIn && auth?.user.email.includes("prof")) return true;
-                return false;
+
+            // Allow access to the registration page ("/register") if not authenticated
+            if (nextUrl.pathname === "/register") {
+                return true;
             }
 
-            //Redirecting to appropriate urls after logging in
-            else if (isLoggedIn) {
-                //Redirect to student url
-                console.log(auth?.user)
-                if (auth?.user.email.includes("student")) {
+            // Continue with your existing logic for authenticated users
+            if (isLoggedIn) {
+
+                if (auth?.user.isStudent === true) {
                     return Response.redirect(new URL("/student/profile", nextUrl));
                 }
-                //Redirect to professor url
-                else if (auth?.user.email.includes("prof")) {
+                if (auth?.user.isStudent === false) {
                     return Response.redirect(new URL("/professor/profile", nextUrl));
                 }
+                return true;
             }
-            return true;
+
+            return false;
         },
     },
     providers: [],

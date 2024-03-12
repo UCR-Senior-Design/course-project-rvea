@@ -22,16 +22,19 @@ async function getUser(email, password) {
         user = (user.length ? user[0] : 0);
 
         if (user && password == user.password) {
-            return { email, "name" : user.Username};
+            console.log("User found:", user); // Log the user object
+            return { email, "name": user.Username, "isStudent": user.isStudent};
         }
         else {
             return null;
         }
     }
-    catch {
-        console.log("error with signing in a user");
+    catch (error) {
+        console.log("Error retrieving user:", error); // Log any errors
+        return null;
     }
 }
+
 
 export const authOptions = {
     providers: [
@@ -39,6 +42,7 @@ export const authOptions = {
             async authorize(credentials) {
                 const email = credentials.email;
                 const password = credentials.password;
+                const isStudent = credentials.isStudent
                 const user = await getUser(email, password);
                 return user;
             }
