@@ -27,17 +27,10 @@ export default function RegisterForm() {
 
             await authenticate(formData);
 
-<<<<<<< HEAD
             // // Determine the destination URL based on user type
             // const destinationURL = toggleState ? '/professor/profile' : '/student/profile';
             // router.push(destinationURL);
 
-=======
-            // Determine the destination URL based on user type
-            const destinationURL = toggleState ? '/professor/profile' : '/student/profile';
-            router.push(destinationURL);
-            
->>>>>>> d9c3f8f1aaca9170d34fd9935f700473e49aeeb4
         }
     };
 
