@@ -16,8 +16,7 @@ export default function CreateJob() {
     }
     
     function publishJob(event) {
-        //event.preventDefault();
-        //alert('Job Created!');
+        event.preventDefault();  //get rid of this?
         //console.log(createJobInfo)
         createJobPosting(createJobInfo);
     }
@@ -67,7 +66,7 @@ export default function CreateJob() {
                     <span className={styles.labels}>Role Description</span>
                 </label>
                 
-                <button className={styles.button} onSubmit={publishJob}>Publish</button>
+                <button className={styles.button} onClick={publishJob}>Publish</button>
 
             </form>
         </div>
