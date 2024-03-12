@@ -21,7 +21,7 @@ export const authConfig = {
             //Redirecting to appropriate urls after logging in
             else if (isLoggedIn) {
                 //Redirect to student url
-                console.log(auth?.user)
+                //console.log(auth?.user)
                 if (auth?.user.email.includes("student")) {
                     return Response.redirect(new URL("/student/profile", nextUrl));
                 }
