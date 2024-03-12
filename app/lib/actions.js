@@ -77,6 +77,7 @@ export async function getProfessorInfo(email) {
 export async function saveAppliedJobs(job_id, user_email) {
     try {
         const db = await connectToDatabase();
+        const student = await db.collection("Student").findOne({Email : user_email});
         const filter = { Email: user_email };
         const updateDoc = {
             $push: {
@@ -84,6 +85,7 @@ export async function saveAppliedJobs(job_id, user_email) {
             },
         };
         db.collection("Student").updateOne(filter, updateDoc);
+        db.collection("Previous Jobs").updateOne({_id : new ObjectId(job_id)}, {$push : {"Applicants" : student._id}});
         console.log("we succesfully applied for a position");
         return;
     }
@@ -106,6 +108,7 @@ export async function createJobPosting(createJobInfo) {
         // Connect to the database and access its Previous Jobs collection
         db = await connectToDatabase();
         const collection = db.collection("Previous Jobs");
+        const professor = await db.collection("Professor").findOne({Username : createJobInfo.professor});
 
         // Create a document to insert
         const doc = {
@@ -124,6 +127,7 @@ export async function createJobPosting(createJobInfo) {
 
         // Insert the defined document into the Previous Jobs collection
         const result = await collection.insertOne(doc);
+        db.collection("Professor").updateOne({_id : professor._id}, {$push : {"Jobs" : result.insertedId}});
         // Print the ID of the inserted document
         // console.log(`A document was inserted with the _id: ${result.insertedId}`);
     } catch (err) {
