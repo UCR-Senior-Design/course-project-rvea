@@ -95,3 +95,29 @@ export async function createJobPosting(createJobInfo) {
         return;
     }
 }
+
+export async function saveNewUser(formData, isStudent) {
+    try {
+        const db = await connectToDatabase();
+        
+        // Determine the collection based on the user type
+        const collectionName = isStudent ? 'Professor' : 'Student';
+        
+        // Create a new user object with the provided form data
+        const newUser = {
+            fullName: formData.fullName,
+            email: formData.email,
+            password: formData.password,
+            isStudent: isStudent ? false : true
+        };
+
+        const result = await db.collection(collectionName).insertOne(newUser);
+        
+        console.log('User saved successfully:', result.insertedId);
+        
+        return result.insertedId;
+    } catch (error) {
+        console.error('Error saving new user:', error);
+        throw error;
+    }
+}
