@@ -1,15 +1,18 @@
 'use client';
+
 import { useState } from "react";
 import styles from "../styles/AppliedJobs.module.css";
 import Popup from "./popup";
 
 export default function AppliedJobs(props) {
-    const appliedJobs = props.appliedJobs;
+    const appliedJobs = props.appliedJobs || []; // Set appliedJobs to an empty array if it's undefined
     const [buttonPopup, setButtonPopup] = useState(false);
 
     return (
         <div className={styles.container}>
-            {
+            {appliedJobs.length === 0 ? (
+                <p>No applied jobs</p>
+            ) : (
                 appliedJobs.map((job, index) => {
                     return (
                         <div className={styles.card} key={index}>
@@ -28,6 +31,7 @@ export default function AppliedJobs(props) {
                         </div>
                     );
                 })
-            }
-        </div>);
+            )}
+        </div>
+    );
 }

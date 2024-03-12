@@ -1,11 +1,11 @@
 'use client';
 
-import { saveNewUser, authenticate } from '../lib/actions';
+import { saveNewProfessor, saveNewStudent, authenticate } from '../lib/actions';
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import styles from '../styles/LoginForm.module.css';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation'; // Import from next/navigation instead of next/router
+import styles from '../styles/LoginForm.module.css'; // Import styles from LoginForm.module.css
 import Image from 'next/image';
+import Link from 'next/link'; 
 
 export default function RegisterForm() {
     const router = useRouter();
@@ -23,13 +23,19 @@ export default function RegisterForm() {
 
         if (formData.password.length > 0) {
 
-            await saveNewUser(formData, toggleState);
+            if (formData.email.includes('student')) {
+
+                await saveNewStudent(formData);
+
+            } else if (formData.email.includes('prof')) {
+
+                await saveNewProfessor(formData);
+
+            }
 
             await authenticate(formData);
 
-            // Determine the destination URL based on user type
-            const destinationURL = toggleState ? '/professor/profile' : '/student/profile';
-            router.push(destinationURL);
+            router.push('/')
             
         }
     };
@@ -55,7 +61,7 @@ export default function RegisterForm() {
             </div>
             <form onSubmit={handleRegister}>
                 <div className={styles.card}>
-                    <h2 className={styles.bold}>{title} <button className={styles.toggleButton} onClick={handleToggle}>Toggle</button></h2>
+                    <h2 className={styles.bold}>{ 'Register' }</h2>
                     
                     <input
                         id="fullName"

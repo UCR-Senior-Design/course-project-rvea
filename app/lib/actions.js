@@ -48,6 +48,9 @@ export async function saveProfessorInfo(mode, profileInfo) {
         console.log('could not connect to db for professor');
         return;
     }
+    finally {
+        closeDatabase();
+    }
 }
 
 export async function saveAppliedJobs(job_id, user_email) {
@@ -68,8 +71,35 @@ export async function saveAppliedJobs(job_id, user_email) {
         console.log('could not connect to db for student application job');
         return;
     }
+    finally {
+        closeDatabase();
+    }
 }
 
+// Save Job Posting to Professor's Acct
+export async function createJobPosting(createJobInfo) {
+    
+    
+    let db;
+    try{
+        // Connect to the database and access its Previous Jobs collection
+        db = await connectToDatabase();
+        const collection = db.collection("Previous Jobs");
+    
+        // Create a document to insert
+        const doc = {
+            Title: createJobInfo.jobTitle,
+            Description: createJobInfo.description,
+            Professor: createJobInfo.professor,
+            Term: createJobInfo.schoolTerm,
+            Contract: "",
+            Deadline: createJobInfo.deadline,
+            Wage: createJobInfo.hourlyWage,
+            MinHrs: createJobInfo.minHrs,
+            TotalPos: createJobInfo.totalPos,
+            Prereqs: createJobInfo.prereqs
+        }
+}
 
 // Save Job Posting to Professor's Acct
 export async function createJobPosting(createJobInfo) {
@@ -111,19 +141,17 @@ export async function createJobPosting(createJobInfo) {
 }
 
 
-export async function saveNewUser(formData, isStudent) {
+export async function saveNewStudent(formData) {
     try {
         const db = await connectToDatabase();
 
         // Determine the collection based on the user type
-        const collectionName = isStudent ? 'Professor' : 'Student';
 
         // Create a new user object with the provided form data
         const newUser = {
-            fullName: formData.fullName,
-            email: formData.email,
+            Username: formData.fullName,
+            Email: formData.email,
             password: formData.password,
-            isStudent: isStudent ? false : true
         };
 
         const result = await db.collection(collectionName).insertOne(newUser);
@@ -180,3 +208,32 @@ export async function editProfile(input_username, degreeLevel, gpa, pronouns, sk
 
 }
 
+
+export async function saveNewProfessor(formData) {
+    try {
+        const db = await connectToDatabase();
+        
+        // Determine the collection based on the user type
+        const collectionName = 'Professor';
+        
+        // Create a new user object with the provided form data
+        const newUser = {
+            Username: formData.fullName,
+            Email: formData.email,
+            password: formData.password,
+            Experience: []
+        };
+
+        const result = await db.collection(collectionName).insertOne(newUser);
+
+        console.log('User saved successfully:', result.insertedId);
+
+        return result.insertedId;
+    } catch (error) {
+        console.error('Error saving new user:', error);
+        throw error;
+    }
+    finally {
+        closeDatabase();
+    }
+}
