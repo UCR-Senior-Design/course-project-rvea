@@ -14,18 +14,18 @@ async function connectToDatabase() {
 
     const db = client.db("UCR_CSE_APP");
     const databaseName = db.databaseName;
-    console.log('Database:', databaseName);
+    //console.log('Database:', databaseName);
 
     // Check if the database exists
     const collections = await db.listCollections().toArray();
     const databaseExists = collections.length > 0;
-    console.log('Database Exists:', databaseExists);
+    //console.log('Database Exists:', databaseExists);
 
     if (databaseExists) {
     // Check if the collection exists
     const collectionName = 'Previous Jobs';
     const collectionExists = await db.listCollections({ name: collectionName }).hasNext();
-    console.log('Collection Exists:', collectionExists);
+    //console.log('Collection Exists:', collectionExists);
 
     if (collectionExists) {
         const collection = db.collection(collectionName);

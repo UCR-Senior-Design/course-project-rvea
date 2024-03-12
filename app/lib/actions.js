@@ -2,7 +2,7 @@
 
 import { signIn } from '../../auth';
 import { AuthError } from 'next-auth';
-import { connectToDatabase } from '../connectdb';
+import { connectToDatabase, closeDatabase } from '../connectdb';
 import { ObjectId } from 'mongodb';
 import { signOut } from '../../auth';
 
@@ -71,30 +71,41 @@ export async function saveProfessorInfo(mode, profileInfo) {
 
 // Save Job Posting to Professor's Acct
 export async function createJobPosting(createJobInfo) {
+    
+    
+    let db;
     try{
-        //Store job posting by saving it to professor user [which is a better way to store it?: new colelction? existing prof user?]
-        // const db = connectToDatabase();
-        // const filter = { _id: new ObjectId(createJobInfo._id)};
-        // const createDoc = {
-        //     $set: {
-        //         jobtitle: profileInfo.email,
-        //         phone_number: profileInfo.phone_number,
-        //         pronouns: profileInfo.pronouns,
-        //         description: profileInfo.description,
-        //         postedjobs: createJobInfo.
-        //     },
-        // };
+        // Connect to the database and access its Previous Jobs collection
+        db = await connectToDatabase();
+        const collection = db.collection("Previous Jobs");
+    
+        // Create a document to insert
+        const doc = {
+            Title: createJobInfo.jobTitle,
+            Description: createJobInfo.description,
+            Professor: createJobInfo.professor,
+            Term: createJobInfo.schoolTerm,
+            Contract: "",
+            Deadline: createJobInfo.deadline,
+            Wage: createJobInfo.hourlyWage,
+            MinHrs: createJobInfo.minHrs,
+            TotalPos: createJobInfo.totalPos,
+            Prereqs: createJobInfo.prereqs
+        }
 
-        //save document to database
-            //db.collection("Professor").updateOne(filter, updateDoc);
-        console.log('successfully created a job')
-        return;
+        // Insert the defined document into the Previous Jobs collection
+        const result = await collection.insertOne(doc);
+        // Print the ID of the inserted document
+        // console.log(`A document was inserted with the _id: ${result.insertedId}`);
+    } catch (err) {
+                console.log(err);
+                console.log('could not create job posting');
+                return;
+    } finally {
+        // Close the MongoDB client connection
+        closeDatabase(db);
     }
-    catch (err) {
-        console.log(err);
-        console.log('could not create job posting');
-        return;
-    }
+
 }
 
 
