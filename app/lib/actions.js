@@ -50,28 +50,30 @@ export async function saveProfessorInfo(mode, profileInfo) {
     }
 }
 
-// export async function saveAppliedJobs() {
-//     try {
-//         const db = await connectToDatabase();
-//         console.log("student successfully applied to a job");
-//         return;
-
-//         //professor creates posting/job object, we save student id's in attribute of that job posting [into job collection]
-//         //also save into Student Applied Jobs collection [to show on student view]
-//                     //student id
-//             //job_ids[]
-//     }
-//     catch (err) {
-//         console.log(err);
-//         console.log('could not connect to db for student applications');
-//         return;
-//     }
-// }
+export async function saveAppliedJobs(job_id, user_email) {
+    try {
+        const db = await connectToDatabase();
+        const filter = { Email: user_email };
+        const updateDoc = {
+            $push: {
+                "Experience": new ObjectId(job_id)
+            },
+        };
+        db.collection("Student").updateOne(filter, updateDoc);
+        console.log("we succesfully applied for a position");
+        return;
+    }
+    catch (err) {
+        console.log(err);
+        console.log('could not connect to db for student application job');
+        return;
+    }
+}
 
 
 // Save Job Posting to Professor's Acct
 export async function createJobPosting(createJobInfo) {
-    try{
+    try {
         //Store job posting by saving it to professor user [which is a better way to store it?: new colelction? existing prof user?]
         // const db = connectToDatabase();
         // const filter = { _id: new ObjectId(createJobInfo._id)};
@@ -86,7 +88,7 @@ export async function createJobPosting(createJobInfo) {
         // };
 
         //save document to database
-            //db.collection("Professor").updateOne(filter, updateDoc);
+        //db.collection("Professor").updateOne(filter, updateDoc);
         console.log('successfully created a job')
         return;
     }
@@ -101,10 +103,10 @@ export async function createJobPosting(createJobInfo) {
 export async function saveNewUser(formData, isStudent) {
     try {
         const db = await connectToDatabase();
-        
+
         // Determine the collection based on the user type
         const collectionName = isStudent ? 'Professor' : 'Student';
-        
+
         // Create a new user object with the provided form data
         const newUser = {
             fullName: formData.fullName,
@@ -114,9 +116,9 @@ export async function saveNewUser(formData, isStudent) {
         };
 
         const result = await db.collection(collectionName).insertOne(newUser);
-        
+
         console.log('User saved successfully:', result.insertedId);
-        
+
         return result.insertedId;
     } catch (error) {
         console.error('Error saving new user:', error);
