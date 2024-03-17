@@ -3,7 +3,7 @@ import styles from '../styles/applicants.module.css';
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { acceptStudent } from '../lib/actions';
+import { acceptStudent, declineStudent } from '../lib/actions';
 
 export default function ProfessorApplicants(props) {
     let applicants = JSON.parse(props.applicants);
@@ -13,9 +13,9 @@ export default function ProfessorApplicants(props) {
         setStatus({ ...status, [studentId]: 'accept' });
         acceptStudent(key, studentId);
     }
-    const handleDecline = () => {
-        setStatus('decline')
-    }
+    const handleDecline = (key, studentId) => {
+        setStatus({ ...status, [studentId]: 'decline' });
+        declineStudent(key, studentId);    }
 
     const [pdf, setPdf] = useState('');
 
@@ -57,11 +57,11 @@ export default function ProfessorApplicants(props) {
                                                         </button>
                                                     </p>
                                                     {status[student.id] === 'accept' || student.accepted ? <p className={styles.underline}>Accepted</p> :
-                                                        status === 'decline' ? <p className={styles.underline}>Declined</p> :
+                                                        status[student.id] === 'decline' || student.declined ? <p className={styles.underline}>Declined</p> :
                                                             <div className={styles.buttons}>
                                                                 <form id={`accept-decline-${key}-${student.username}`}></form>
                                                                 <button form={`accept-decline-${key}-${student.username}`} type="submit" className={`${styles.buttons} ${styles.green}`} onClick={() => handleAccept(key, student.id)}>Accept</button>
-                                                                <button className={`${styles.buttons} ${styles.red}`} onClick={handleDecline}>Decline</button>
+                                                                <button className={`${styles.buttons} ${styles.red}`} onClick={() => handleDecline(key, student.id)}>Decline</button>
                                                             </div>
                                                     }
                                                 </label>
