@@ -1,4 +1,5 @@
 'use client';
+
 import {useState, useRef} from "react";
 import {addNewSkill, removeSkill, addNewCourse, removeCourse, addYear, removeYear, addExperience, removeExperience, addNewPersonalInfo, removePersonalInfo, handleFileChange} from "./ProfilePageFunctions";
 import { editProfile } from '../lib/actions';
@@ -6,25 +7,27 @@ import styles from "../styles/ProfilePage.module.css";
 
 import { useSession } from 'next-auth/react';
 
+export default function ProfilePage(props) {
+    const profileInfo = props.profileInfo;
 
-export default function ProfilePage() {
-    const [skills, setSkills] = useState([]);
-    const [courses, setCourses] = useState([]);
+    const [skills, setSkills] = useState(profileInfo.Skills || []);
+    const [courses, setCourses] = useState(profileInfo.Courses || []);
     const [years, setYears] = useState([]);
     const [experiences, setExperiences] = useState([]);
-    const [pdfs, setPdfs] = useState([]); // transcripts
-    const [resume_pdfs, setResumePdfs] = useState([]);
+    //const [pdfs, setPdfs] = useState([]); // transcripts
+    const [pdfs, setPdfs] = useState(profileInfo.Transcript || []);
+    const [resume_pdfs, setResumePdfs] = useState(profileInfo.Resume || []);
     
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [occupation, setOccupation] = useState('');
-    const [gpa, setGpa] = useState('');
-    const [pronouns, setPronouns] = useState('');
+    const [gpa, setGpa] = useState(profileInfo.GPA || '');
+    const [pronouns, setPronouns] = useState(profileInfo.Pronouns || '');
     const [email, setEmail] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [birthday, setBirthday] = useState('');
 
-    const [degreeLevel, setDegreeLevel] = useState('');
+    const [degreeLevel, setDegreeLevel] = useState(profileInfo.DegreeLevel || '');
 
 
     const { data: session } = useSession();
@@ -131,6 +134,7 @@ export default function ProfilePage() {
             console.error(error);
         }
     };
+
 
     return(
         <div className={styles.all_container}>
