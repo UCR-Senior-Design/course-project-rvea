@@ -5,7 +5,7 @@ import SessionProvider from '../components/SessionProvider.jsx';
 export default async function StudentLayout({ children }) {
     const routes = [
         { name: 'Job Listings', link: '/student/job-listings' },
-        { name: 'Recommended Jobs', link: '/student/rec-jobs' },
+        // { name: 'Recommended Jobs', link: '/student/rec-jobs' },
         { name: 'Applied Jobs', link: '/student/applied-jobs' },
         { name: 'Profile', link: '/student/profile' }
     ];

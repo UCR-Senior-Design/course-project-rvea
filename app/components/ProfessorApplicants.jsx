@@ -3,18 +3,19 @@ import styles from '../styles/applicants.module.css';
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { acceptStudent } from '../lib/actions';
+import { acceptStudent, declineStudent } from '../lib/actions';
 
 export default function ProfessorApplicants(props) {
     let applicants = JSON.parse(props.applicants);
     console.log(applicants);
-    const [status, setStatus] = useState();
-    const handleAccept = () => {
-        setStatus('accept')
+    const [status, setStatus] = useState({});
+    const handleAccept = (key, studentId) => {
+        setStatus({ ...status, [studentId]: 'accept' });
+        acceptStudent(key, studentId);
     }
-    const handleDecline = () => {
-        setStatus('decline')
-    }
+    const handleDecline = (key, studentId) => {
+        setStatus({ ...status, [studentId]: 'decline' });
+        declineStudent(key, studentId);    }
 
     const [pdf, setPdf] = useState('');
 
@@ -26,10 +27,7 @@ export default function ProfessorApplicants(props) {
                     return (
                         <div key={key} className={styles.course}>
                             <h1 className={`${styles.top_padding}`}>{key}</h1>
-                            {applicants[key].map((student) => {
-                                return (
-                                    <>
-                                        <div key={student} className={styles.categories}>
+                                        <div key={applicants} className={styles.categories}>
                                             <h4>Name</h4>
                                             <h4>Degree</h4>
                                             <h4>GPA</h4>
@@ -37,11 +35,13 @@ export default function ProfessorApplicants(props) {
                                             <h4>Transcript</h4>
                                             <h4>Status</h4>
                                         </div>
-
+                            {applicants[key].map((student) => {
+                                return (
+                                    <>
                                         <ul key={student} className={styles.accordion}>
                                             <li>
-                                                <input type='checkbox' name='accordion' id='first' />
-                                                <label htmlFor='first' className={styles.labels}>
+                                                <input type='checkbox' name={`accordion-${key}-${student.username}`} id={`accordion-${key}-${student.username}`} />
+                                                <label htmlFor={`accordion-${key}-${student.username}`} className={styles.labels}>
                                                     <p>{student.username}</p>
                                                     <p>{student.degreelvl}</p>
                                                     <p>{student.gpa}</p>
@@ -55,12 +55,12 @@ export default function ProfessorApplicants(props) {
                                                             </Link>
                                                         </button>
                                                     </p>
-                                                    {status === 'accept' || student.accepted ? <p className={styles.underline}>Accepted</p> :
-                                                        status === 'decline' ? <p className={styles.underline}>Declined</p> :
+                                                    {status[student.id] === 'accept' || student.accepted ? <p className={styles.underline}>Accepted</p> :
+                                                        status[student.id] === 'decline' || student.declined ? <p className={styles.underline}>Declined</p> :
                                                             <div className={styles.buttons}>
-                                                                <form id="accept-decline"></form>
-                                                                <button form="accept-decline" type="submit" className={`${styles.buttons} ${styles.green}`} formAction={() => {acceptStudent(key, student.id); setStatus('accept')}}>Accept</button>
-                                                                <button className={`${styles.buttons} ${styles.red}`} onClick={handleDecline}>Decline</button>
+                                                                <form id={`accept-decline-${key}-${student.username}`}></form>
+                                                                <button form={`accept-decline-${key}-${student.username}`} type="submit" className={`${styles.buttons} ${styles.green}`} onClick={() => handleAccept(key, student.id)}>Accept</button>
+                                                                <button className={`${styles.buttons} ${styles.red}`} onClick={() => handleDecline(key, student.id)}>Decline</button>
                                                             </div>
                                                     }
                                                 </label>
@@ -78,7 +78,6 @@ export default function ProfessorApplicants(props) {
                                                             </Link>
                                                         </button>
                                                     </p>
-
                                                 </div>
                                             </li>
                                         </ul>
