@@ -27,10 +27,7 @@ export default function ProfessorApplicants(props) {
                     return (
                         <div key={key} className={styles.course}>
                             <h1 className={`${styles.top_padding}`}>{key}</h1>
-                            {applicants[key].map((student) => {
-                                return (
-                                    <>
-                                        <div key={student} className={styles.categories}>
+                                        <div key={applicants} className={styles.categories}>
                                             <h4>Name</h4>
                                             <h4>Degree</h4>
                                             <h4>GPA</h4>
@@ -38,7 +35,9 @@ export default function ProfessorApplicants(props) {
                                             <h4>Transcript</h4>
                                             <h4>Status</h4>
                                         </div>
-
+                            {applicants[key].map((student) => {
+                                return (
+                                    <>
                                         <ul key={student} className={styles.accordion}>
                                             <li>
                                                 <input type='checkbox' name={`accordion-${key}-${student.username}`} id={`accordion-${key}-${student.username}`} />
