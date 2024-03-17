@@ -309,7 +309,8 @@ export async function saveNewProfessor(formData) {
             Username: formData.fullName,
             Email: formData.email,
             password: formData.password,
-            Experience: []
+            Experience: [],
+            Jobs: []
         };
 
         const result = await db.collection('Professor').insertOne(newUser);
