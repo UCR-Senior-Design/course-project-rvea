@@ -23,7 +23,7 @@ export default function ProfessorProfilePage(props) {
                         <h5 className={mode ? styles.nothidden : styles.hidden}>Phone Number: {profileInfo.phone_number}</h5>
                         <h5 className={mode ? styles.nothidden : styles.hidden}>Pronouns: {profileInfo.pronouns}</h5>
                         <form id="professor-info-general">
-                            <input className={`${styles.block} ${!mode && styles.nothidden} ${mode && styles.hidden}`} placeholder='Email' defaultValue={profileInfo.email} onChange={(e) => e.target.value ? profileInfo.email = e.target.value : profileInfo}></input>
+                            <input className={`${styles.block} ${!mode && styles.nothidden} ${mode && styles.hidden}`} placeholder='Email' defaultValue={profileInfo.Email} onChange={(e) => e.target.value ? profileInfo.Email = e.target.value : profileInfo}></input>
                             <input className={`${styles.block} ${!mode && styles.nothidden} ${mode && styles.hidden}`} placeholder='Phone Number' defaultValue={profileInfo.phone_number} onChange={(e) => e.target.value ? profileInfo.phone_number = e.target.value : profileInfo}></input>
                             <input className={`${styles.block} ${!mode && styles.nothidden} ${mode && styles.hidden}`} placeholder='Pronouns' defaultValue={profileInfo.pronouns} onChange={(e) => e.target.value ? profileInfo.pronouns = e.target.value : profileInfo}></input>
                         </form>
