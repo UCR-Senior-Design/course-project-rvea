@@ -74,6 +74,19 @@ export async function getProfessorInfo(email) {
     }
 }
 
+export async function getStudentInfo(email) {
+    try {
+        const db = await connectToDatabase();
+        const studentInfo = await db.collection("Student").find({ "Email": email }).toArray();
+        studentInfo[0]["_id"] = studentInfo[0]["_id"].toString();
+
+        return studentInfo[0];
+    }
+    catch {
+        console.log('could not connect to db for professor');
+    }
+}
+
 export async function saveAppliedJobs(job_id, user_email) {
     try {
         const db = await connectToDatabase();
