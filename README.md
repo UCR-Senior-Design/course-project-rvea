@@ -33,4 +33,8 @@ Term: Fall 2023 - Winter 2024
    email: jiang@prof.edu  
    pw: 1234  
 
-2) 
+2) Robert Lee  
+   email: rlee@prof.edu  
+   pw: 1234
+
+3) 
