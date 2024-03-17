@@ -10,6 +10,7 @@ import { useSession } from 'next-auth/react';
 export default function ProfilePage(props) {
     const profileInfo = props.profileInfo;
 
+    const [showMessage, setShowMessage] = useState(false);
     const [skills, setSkills] = useState(profileInfo.Skills || []);
     const [courses, setCourses] = useState(profileInfo.Courses || []);
     const [years, setYears] = useState([]);
@@ -100,7 +101,7 @@ export default function ProfilePage(props) {
         }
       };
     */}
-
+      
     const handleFileChange = (event) => {
         const file = event.target.files[0];
         if (file && file.type === "application/pdf") {
@@ -126,6 +127,8 @@ export default function ProfilePage(props) {
 
       const handleProfileSubmit = async () => {
         try {
+            setShowMessage(true);
+            setTimeout(() => setShowMessage(false), 3000); // Hide the message after 3 seconds
             const transcript_pdfBase64 = pdfs;
             const resume_pdfBased64 = resume_pdfs;
             const result = await editProfile(userName, degreeLevel, gpa, pronouns, skills, courses, transcript_pdfBase64, resume_pdfBased64);
@@ -138,6 +141,7 @@ export default function ProfilePage(props) {
 
     return(
         <div className={styles.all_container}>
+            {showMessage && <div className={styles.message}>Submitted!</div>}
             <div className={styles.all_upper_container}>
                 <button onClick={resetAll} className={`${styles.large_reset_button} ${styles.bg_yellow}`}>Reset All</button>
                 <span className={styles.divider}></span>
