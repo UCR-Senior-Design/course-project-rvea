@@ -55,7 +55,8 @@ export default function ProfessorApplicants(props) {
                                                             </Link>
                                                         </button>
                                                     </p>
-                                                    {status === 'accept' || student.accepted ? <p className={styles.underline}>Accepted</p> :
+                                                    {/* || student.accepted  */}
+                                                    {status === 'accept'? <p className={styles.underline}>Accepted</p> :
                                                         status === 'decline' ? <p className={styles.underline}>Declined</p> :
                                                             <div className={styles.buttons}>
                                                                 <form id="accept-decline"></form>
