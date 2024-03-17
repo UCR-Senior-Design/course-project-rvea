@@ -164,6 +164,7 @@ export async function saveNewStudent(formData) {
             Username: formData.fullName,
             Email: formData.email,
             password: formData.password,
+            courses: []
         };
 
         const result = await db.collection('Student').insertOne(newUser);
@@ -199,8 +200,9 @@ export async function getApplicants(email) {
             for (let userid of res[job]) {
                 let stu = await db.collection("Student").findOne({ _id: userid });
                 const accepted = await db.collection("Job").findOne({student: new Object(stu._id)});
+                const declined = await db.collection("DeclinedApplicants").findOne({student: new Object(stu._id)});
                 console.log(accepted);
-                finalres[job].push({accepted: !!accepted, id: stu._id, username: stu.Username, degreelvl: stu.DegreeLevel, gpa: stu.GPA, applicationDate: stu.ApplicationDate, pronouns: stu.Pronouns, skills: stu.Skills, courses: stu.Courses, transcript: stu.Transcript, resume: stu.Resume });
+                finalres[job].push({accepted: !!accepted, declined: !!declined, id: stu._id, username: stu.Username, degreelvl: stu.DegreeLevel, gpa: stu.GPA, applicationDate: stu.ApplicationDate, pronouns: stu.Pronouns, skills: stu.Skills, courses: stu.Courses, transcript: stu.Transcript, resume: stu.Resume });
             }
         }
 
@@ -231,6 +233,26 @@ export async function acceptStudent(course, student) {
         console.log('successfully saved student', result.insertedId);
     } catch (error) {
         console.error('Error accepting student', error);
+        throw error;
+    }
+}
+
+export async function declineStudent(course, student) {
+    try {
+        const db = await connectToDatabase();
+        const job = await db.collection("Previous Jobs").findOne({ Title: course });
+
+        // Create a new user object with the provided form data
+        const declinedStudent = {
+            student: new ObjectId(student),
+            course: job._id
+        };
+
+        const result = await db.collection("DeclinedApplicants").insertOne(declinedStudent);
+
+        console.log('successfully saved declined student', result.insertedId);
+    } catch (error) {
+        console.error('Error declining student', error);
         throw error;
     }
 }
