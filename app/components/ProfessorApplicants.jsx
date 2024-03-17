@@ -40,48 +40,48 @@ export default function ProfessorApplicants(props) {
                                         </div>
 
                                         <ul key={student} className={styles.accordion}>
-    <li>
-        <input type='checkbox' name={`accordion-${key}-${student.username}`} id={`accordion-${key}-${student.username}`} />
-        <label htmlFor={`accordion-${key}-${student.username}`} className={styles.labels}>
-            <p>{student.username}</p>
-            <p>{student.degreelvl}</p>
-            <p>{student.gpa}</p>
-            <p>{student.applicationDate}</p>
-            <p>
-                <button onClick={() => setPdf(student.transcript)}>
-                    <Link legacyBehavior href={pdf ? `${pdf}` : ''} passHref>
-                        <a target="_blank">
-                            <Image className={styles.image} src='/doc_icon.png' width='43' height='43'></Image>
-                        </a>
-                    </Link>
-                </button>
-            </p>
-            {status[student.id] === 'accept' || student.accepted ? <p className={styles.underline}>Accepted</p> :
-                status === 'decline' ? <p className={styles.underline}>Declined</p> :
-                    <div className={styles.buttons}>
-                        <form id={`accept-decline-${key}-${student.username}`}></form>
-                        <button form={`accept-decline-${key}-${student.username}`} type="submit" className={`${styles.buttons} ${styles.green}`} onClick={() => handleAccept(key, student.id)}>Accept</button>
-                        <button className={`${styles.buttons} ${styles.red}`} onClick={handleDecline}>Decline</button>
-                    </div>
-            }
-        </label>
+                                            <li>
+                                                <input type='checkbox' name={`accordion-${key}-${student.username}`} id={`accordion-${key}-${student.username}`} />
+                                                <label htmlFor={`accordion-${key}-${student.username}`} className={styles.labels}>
+                                                    <p>{student.username}</p>
+                                                    <p>{student.degreelvl}</p>
+                                                    <p>{student.gpa}</p>
+                                                    <p>{student.applicationDate}</p>
+                                                    <p>
+                                                        <button onClick={() => setPdf(student.transcript)}>
+                                                            <Link legacyBehavior href={pdf ? `${pdf}` : ''} passHref>
+                                                                <a target="_blank">
+                                                                    <Image className={styles.image} src='/doc_icon.png' width='43' height='43'></Image>
+                                                                </a>
+                                                            </Link>
+                                                        </button>
+                                                    </p>
+                                                    {status[student.id] === 'accept' || student.accepted ? <p className={styles.underline}>Accepted</p> :
+                                                        status === 'decline' ? <p className={styles.underline}>Declined</p> :
+                                                            <div className={styles.buttons}>
+                                                                <form id={`accept-decline-${key}-${student.username}`}></form>
+                                                                <button form={`accept-decline-${key}-${student.username}`} type="submit" className={`${styles.buttons} ${styles.green}`} onClick={() => handleAccept(key, student.id)}>Accept</button>
+                                                                <button className={`${styles.buttons} ${styles.red}`} onClick={handleDecline}>Decline</button>
+                                                            </div>
+                                                    }
+                                                </label>
 
-        <div className={styles.content}>
-            <p className={styles.bold}>Pronouns: {student.pronouns} </p>
-            <p className={styles.bold}>Courses Taken: {student.courses.map((course) => course + " ")}</p>
-            <p className={`${styles.bold} ${styles.skills}`}>Skills: {student.skills.map((skill) => skill + " ")}</p>
-            <p className={`${styles.bold} ${styles.resume_container}`}>Resume:
-                <button onClick={() => setPdf(student.resume)}>
-                    <Link legacyBehavior href={pdf ? `${pdf}` : ''} passHref>
-                        <a target="_blank">
-                            <Image className={styles.image} src='/doc_icon.png' width='43' height='43'></Image>
-                        </a>
-                    </Link>
-                </button>
-            </p>
-        </div>
-    </li>
-</ul>
+                                                <div className={styles.content}>
+                                                    <p className={styles.bold}>Pronouns: {student.pronouns} </p>
+                                                    <p className={styles.bold}>Courses Taken: {student.courses.map((course) => course + " ")}</p>
+                                                    <p className={`${styles.bold} ${styles.skills}`}>Skills: {student.skills.map((skill) => skill + " ")}</p>
+                                                    <p className={`${styles.bold} ${styles.resume_container}`}>Resume:
+                                                        <button onClick={() => setPdf(student.resume)}>
+                                                            <Link legacyBehavior href={pdf ? `${pdf}` : ''} passHref>
+                                                                <a target="_blank">
+                                                                    <Image className={styles.image} src='/doc_icon.png' width='43' height='43'></Image>
+                                                                </a>
+                                                            </Link>
+                                                        </button>
+                                                    </p>
+                                                </div>
+                                            </li>
+                                        </ul>
                                     </>
                                 )
                             })}
