@@ -27,7 +27,8 @@
 
 ### Running the Website
 1) Change your directory to "course-project-rvea"
-2) `npm run dev`
+2) Run the site  
+   `npm run dev`
 
 ## Sample Users
 **Students:**
