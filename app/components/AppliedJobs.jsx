@@ -19,7 +19,7 @@ export default function AppliedJobs(props) {
                             <div className={styles.card_top}>
                                 <img src="/cs_icon.png" alt="cs icon for cards" width="55" height="60" />
                                 <div className={styles.card_info}>
-                                    <h4>{job.Title + "-" + job.Term + "-" + job.Position}</h4>
+                                    <h4>{job.Title + "-" + job.Term}</h4>
                                     <h4>{job.Professor}</h4>
                                 </div>
                                 <button className={`${styles.button} ${styles.bg_yellow}`} onClick={() => { setButtonPopup(true); document.body.style.overflow = "hidden" }}>View</button>

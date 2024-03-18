@@ -66,9 +66,9 @@ export default function ProfessorApplicants(props) {
                                                 </label>
 
                                                 <div className={styles.content}>
-                                                    <p className={styles.bold}>Pronouns: {student.pronouns} </p>
-                                                    <p className={styles.bold}>Courses Taken: {student.courses.map((course) => course + " ")}</p>
-                                                    <p className={`${styles.bold} ${styles.skills}`}>Skills: {student.skills.map((skill) => skill + " ")}</p>
+                                                    <p className={styles.bold}>Pronouns: <span className={styles.lightweight}>{student.pronouns}</span></p>
+                                                    <p className={styles.bold}>Courses Taken: <span className={styles.lightweight}>{student.courses.map((course, index) => index === student.courses.length - 1 ? course : `${course}, `)}</span></p>
+                                                    <p className={`${styles.bold} ${styles.skills}`}>Skills: <span className={styles.lightweight}>{student.skills.map((skill, index) => index === student.skills.length - 1 ? skill : `${skill}, `)}</span></p>
                                                     <p className={`${styles.bold} ${styles.resume_container}`}>Resume:
                                                         <button onClick={() => setPdf(student.resume)}>
                                                             <Link legacyBehavior href={pdf ? `${pdf}` : ''} passHref>
