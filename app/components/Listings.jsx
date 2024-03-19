@@ -35,8 +35,8 @@ export default function Listings(props) {
                                 <h3 className={`${styles.text} ${styles.title}`}>{data.Title}</h3>
                                 <p className={`${styles.text} ${styles.name}`}>{data.Professor}</p><br></br>
                                 <p className={`${styles.text} ${styles.quarter}`}>Term: {data.Term}</p>
-                                <p className={styles.text}>Wage: <span className={styles.wage}>{data.hourlyWage}</span></p>
-                                <p className={styles.text}>Remaining Seats: <span className={styles.seats}>{data.totalSeats}</span></p>
+                                <p className={styles.text}>Wage: <span className={styles.wage}>${data.Wage}</span></p>
+                                <p className={styles.text}>Remaining Seats: <span className={styles.seats}>{data.TotalPos}</span></p>
                             </div>
                         </div>
                     )
@@ -64,7 +64,7 @@ export default function Listings(props) {
                         </div>
                         <div className={styles.about_card}>
                             <p className={`${styles.about_heading} ${styles.color_bold}`}>Wage</p>
-                            <p className={`${styles.no_margin} ${styles.color_gray}`}>{listings[jobIndex]?.Wage}/hour</p>
+                            <p className={`${styles.no_margin} ${styles.color_gray}`}>${listings[jobIndex]?.Wage}/hour</p>
                         </div>
                         <div className={styles.about_card}>
                             <p className={`${styles.about_heading} ${styles.color_bold}`}>Minimum Hours/Week</p>

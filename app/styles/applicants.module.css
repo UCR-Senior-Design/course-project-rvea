@@ -135,10 +135,10 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin: 0px;
+    margin-right: 0px;
 }
 .resume {
-    margin: 0 10px;
+    margin-right: 0px;
 }
 .skills {
     margin-bottom: 5px;
@@ -175,4 +175,11 @@
 }
 .top_padding {
     margin-top: 50px;
+}
+.lightweight {
+    font-weight: 400
+}
+
+.givespace {
+    margin-left: 16px;
 }
