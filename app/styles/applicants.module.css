@@ -179,3 +179,7 @@
 .lightweight {
     font-weight: 400
 }
+
+.givespace {
+    margin-left: 16px;
+}

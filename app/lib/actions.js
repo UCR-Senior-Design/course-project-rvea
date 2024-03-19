@@ -184,11 +184,13 @@ export async function getApplicants(email) {
         const professorInfo = await db.collection("Professor").find({ "Email": email }).toArray();
         const jobs = await db.collection("Previous Jobs").find({}).toArray();
         let res = {};
+        let jobids = {};
 
         for (let jobId in professorInfo[0]["Jobs"]) {
             for (let job of jobs) {
                 if (job._id.toString() == professorInfo[0]["Jobs"][jobId].toString()) {
                     res[job.Title] = job.Applicants;
+                    jobids[job.Title] = job._id;
                 }
             }
         }
@@ -199,8 +201,9 @@ export async function getApplicants(email) {
             finalres[job] = [];
             for (let userid of res[job]) {
                 let stu = await db.collection("Student").findOne({ _id: userid });
-                const accepted = await db.collection("Job").findOne({student: new Object(stu._id)});
-                const declined = await db.collection("DeclinedApplicants").findOne({student: new Object(stu._id)});
+                const jobid = jobids[job];
+                const accepted = await db.collection("Job").findOne({student: new Object(stu._id), course: jobid});
+                const declined = await db.collection("DeclinedApplicants").findOne({student: new Object(stu._id), course: jobid});
                 console.log(accepted);
                 finalres[job].push({accepted: !!accepted, declined: !!declined, id: stu._id, username: stu.Username, degreelvl: stu.DegreeLevel, gpa: stu.GPA, applicationDate: stu.ApplicationDate, pronouns: stu.Pronouns, skills: stu.Skills, courses: stu.Courses, transcript: stu.Transcript, resume: stu.Resume });
             }
