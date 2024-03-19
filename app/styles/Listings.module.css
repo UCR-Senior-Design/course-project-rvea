@@ -1,0 +1,158 @@
+.container {
+    padding: 0 20px;
+    display: flex;
+    height: 700px;
+    flex-direction: row;
+    justify-content: space-evenly;
+    overflow-wrap: break-word;
+}
+
+
+
+
+/* Left Column | Job Listings */
+.listings-container {
+    background-color: var(--bg_darker);
+    width: 20%;
+    min-width: 350px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    padding: 5px 10px 10px 5px;
+}
+
+
+.cards {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    padding: 15px;
+    border: solid 2px;
+    border-color: gray;
+    border-radius: 4px;
+    margin: 2px;
+}
+.card-logo{
+    margin: 0;
+    padding-right: 20px;
+}
+.cards:hover {
+    background-color: var(--yellow_hover);
+    transition: all 0.3s;
+}
+
+
+.text {
+    margin: 0;
+    color: var(--grey);
+}
+.title {
+    text-decoration: underline;
+    color: black;
+}
+.quarter {
+    font-weight: bold;
+    color: black;
+}
+.wage {
+    color: black;
+    font-weight: bold;
+}
+.seats {
+    color: black;
+    font-weight: bold;
+}
+
+
+
+
+/* Right Column | Details */
+.details-container {
+    background-color: var(--bg_darker);
+    width: 75%;
+    border-radius: 5px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    text-align: left;
+}
+.details {
+    background-color: white;
+    border-radius: 10px;
+    padding: 80px;
+    padding-top: 50px;
+    overflow: auto;
+    width: 700px;
+}
+
+
+.subtitle {
+    margin-bottom: 50px;
+    display: flex;
+}
+.subtitle_text {
+    margin-top: 8px;
+    margin-bottom: 3px;
+    position: relative;
+    left: 15px;
+}
+
+
+.about {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.about_card {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+}
+.about_heading {
+    margin-bottom: 5px;
+}
+.prereq_text {
+    margin-bottom: 50px;
+}
+
+
+.description {
+    margin-bottom: 50px;
+    width: 650px;
+}
+
+
+.button {
+    background-color: var(--yellow);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 1px 3px 10px gray;
+}
+.button:hover {
+    background-color: var(--yellow_hover);
+    transition: all 0.2s
+}
+.button:active {
+    box-shadow: none;
+    transform: translateY(2px);
+}
+
+
+.color_gray {
+    color: var(--grey);
+}
+.color_bold {
+    font-weight: bold;
+}
+.underline {
+    text-decoration: underline;
+}
+.no_margin {
+    margin: 0px;
+}

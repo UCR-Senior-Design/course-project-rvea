@@ -1,0 +1,57 @@
+
+
+.bg {
+    margin: auto;
+    background-color: #E2DFD1;
+    width: 90vw;
+    border-radius: 5px;
+    /*height: 66.67vw; */
+}
+
+.listings-container {
+    margin: auto;
+    background-color: #E2DFD1;
+    width: 50%;
+    min-width: 350px;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.cards {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    padding: 10px;
+    border: solid 2px;
+    border-color: gray;
+    border-radius: 8px;
+    margin: 3px 0;
+}
+.rankings {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-right: 10px;
+}
+
+.text {
+    margin: 0;
+    color: var(--grey);
+}
+.title {
+    text-decoration: underline;
+    color: black;
+}
+.quarter {
+    font-weight: bold;
+    color: black;
+}
+.wage {
+    color: black;
+    font-weight: bold;
+}
+.seats {
+    color: black;
+    font-weight: bold;
+}

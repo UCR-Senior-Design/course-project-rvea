@@ -1,0 +1,82 @@
+{
+    "jobListings": [
+        {
+            "jobTitle": "CS150-Fall 2023-TA",
+            "jobDescription": "4 Units, Lecture, 3 hours; discussion, 1 hour. A study of formal languages. Includes regular and context-free languages; computational models for generating these languages such as finite-state automata, pushdown automata, regular expressions, and context-free grammars; mathematical properties of the languages and models; and equivalence between the models. Also introduces Turing machines and decidability.",
+            "jobTerm": "Fall 2023",
+            "professor": "Tao Jiang",
+            "hourlyWage": "$15",
+            "minHrs": "10",
+            "totalSeats": "5",
+            "deadline": "August 20, 2023",
+            "prerequisites": "CS 014 with a grade of “C-” or better; CS 111; MATH 009C (or MATH 09HC)"
+        },
+        {
+            "jobTitle": "CS170-Fall 2022-ULA",
+            "jobDescription": "4 Units, Lecture, 3 hours; discussion, 1 hour.  An introduction to the field of artificial intelligence. Focuses on discretevalued problems. Covers heuristic search, problem representation, and classical planning. Also covers constraint satisfaction and logical inference.",
+            "jobTerm": "Fall 2022",
+            "professor": "Nader S. Senobari",
+            "hourlyWage": "$14",
+            "minHrs": "10",
+            "totalSeats": "2",
+            "deadline": "August 22, 2022",
+            "prerequisites": "CS 100 with a grade of “C-” or better, CS 111."
+        },
+        {
+            "jobTitle": "CS165-Winter 2023-Reader",
+            "jobTerm": "Winter 2023",
+            "jobDescription": "4 Units, Lecture, 3 hours; laboratory, 3 hours.  Examines the ways in which information systems are vulnerable to security breaches. Topics include attacks; security labels, lattices, and policies; safeguards and countermeasures; intrusion detection; authorization and encryption techniques; networks; digital signatures, certificates, and passwords; privacy issues, firewalls, and spoofing; Trojan horses and computer viruses; CERT Coordination Center; and electronic commerce.",
+            "professor": "Trent Jaegar",
+            "hourlyWage": "$13",
+            "minHrs": "12",
+            "totalSeats": "4",
+            "deadline": "December 10, 2023",
+            "prerequisites": "CS 141, CS 153."
+        },
+        {
+            
+            "jobTitle": "CS166-Spring 2022-TA",
+            "jobTerm": "Spring 2022",
+            "jobDescription": "4 Units, Lecture, 3 hours; laboratory, 3 hours.  Covers architecture of database management systems; relational, network, and hierarchical models; distributed database concepts; query languages; implementation issues; and privacy and security of the database.",
+            "professor": "Vassilis Tsotras",
+            "hourlyWage": "$15",
+            "minHrs": "14",
+            "totalSeats": "1",
+            "deadline": "March 15, 2022",
+            "prerequisites": "CS 100, CS 111."
+        },
+        {
+            "jobTitle": "CS160-Winter 2023-ULA",
+            "jobTerm": "Winter 2023",
+            "jobDescription": "4 Units, Lecture, 3 hours; laboratory, 3 hours.  A study of concurrent and parallel systems. Topics include modular structure and design, interprocess communication, synchronization, failures, persistence, and concurrency control. Also covers atomic transactions, recovery, language support, distributed interprocess communication, and implementation mechanisms. Provides preparation for the study of operating systems, databases, and computer networking.",
+            "professor": "Elaheh Sandrendini",
+            "hourlyWage": "$17",
+            "minHrs": "13",
+            "totalSeats": "2",
+            "deadline": "December 20, 2023",
+            "prerequisites": "CS 061, CS 100, CS 111."
+        },
+        {
+            "jobTitle": "CS153-Winter 2020-Reader",
+            "jobTerm": "Winter 2020",
+            "jobDescription": "4 Units, Lecture, 3 hours; laboratory, 3 hours.  Covers the principles and practice of operating system design. Includes concurrency, memory management, file systems, protection, security, command languages, scheduling, and system performance.",
+            "professor": "Heng Yin",
+            "hourlyWage": "$10",
+            "minHrs": "11",
+            "totalSeats": "4",
+            "deadline": "January 1, 2020",
+            "prerequisites": "CS 061, CS 100, CS 111, C++ programming proficiency."
+        },
+        {
+            "jobTitle": "CS152-Spring 2023-TA",
+            "jobTerm": "Spring 2023",
+            "jobDescription": "4 Units, Lecture, 3 hours; laboratory, 3 hours.  Covers the fundamentals of compiler design. Includes lexical analysis, parsing, semantic analysis, compile-time memory organization, run-time memory organization, code generation, and compiler portability issues.",
+            "professor": "Neftali W. Medina",
+            "hourlyWage": "$15",
+            "minHrs": "10",
+            "totalSeats": "2",
+            "deadline": "March 13, 2023",
+            "prerequisites": "CS 061, CS 100, CS 111, CS 150."
+        }
+    ]
+}
