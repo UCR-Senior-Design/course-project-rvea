@@ -47,10 +47,10 @@ export default function ProfessorApplicants(props) {
                                                     <p>{student.gpa}</p>
                                                     <p>{student.applicationDate}</p>
                                                     <p>
-                                                        <button onClick={() => setPdf(student.transcript)}>
+                                                        <button className={styles.image} onClick={() => setPdf(student.transcript)}>
                                                             <Link legacyBehavior href={pdf ? `${pdf}` : ''} passHref>
                                                                 <a target="_blank">
-                                                                    <Image className={styles.image} src='/doc_icon.png' width='43' height='43'></Image>
+                                                                    <Image className={styles.image} src='/file.png' width='43' height='43'></Image>
                                                                 </a>
                                                             </Link>
                                                         </button>
@@ -70,10 +70,10 @@ export default function ProfessorApplicants(props) {
                                                     <p className={styles.bold}>Courses Taken: <span className={styles.lightweight}>{student.courses.map((course, index) => index === student.courses.length - 1 ? course : `${course}, `)}</span></p>
                                                     <p className={`${styles.bold} ${styles.skills}`}>Skills: <span className={styles.lightweight}>{student.skills.map((skill, index) => index === student.skills.length - 1 ? skill : `${skill}, `)}</span></p>
                                                     <p className={`${styles.bold} ${styles.resume_container}`}>Resume:
-                                                        <button className={styles.givespace} onClick={() => setPdf(student.resume)}>
+                                                        <button className={ `${styles.givespace} ${styles.image} `} onClick={() => setPdf(student.resume)}>
                                                             <Link legacyBehavior href={pdf ? `${pdf}` : ''} passHref>
                                                                 <a target="_blank">
-                                                                    <Image className={styles.image} src='/doc_icon.png' width='43' height='43'></Image>
+                                                                    <Image className={styles.image} src='/file.png' width='43' height='43'></Image>
                                                                 </a>
                                                             </Link>
                                                         </button>
