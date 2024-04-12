@@ -4,6 +4,12 @@
 <p align=center> By: Adlai Morales-Bravo, Ethan Fox, Robert Layco, & Vincent Vo</p>
 <p align=center> Term: Fall 2023 - Winter 2024</p>
 
+<p align=center>
+  <a href="https://youtu.be/vRgt90BkUBo">
+    <img src="https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white">
+  </a>
+</p>
+
   
 ## Tools Used
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
